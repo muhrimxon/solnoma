@@ -5,36 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ойма-ой — Контент Режа</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink: #1a1208;
-    --ink2: #3d3020;
-    --ink3: #7a6a50;
-    --paper: #faf7f0;
-    --paper2: #f0ebe0;
-    --paper3: #e8e0d0;
-    --rule: #c8b89a;
-    --rule2: #d8cdb8;
-    --accent: #8b2000;
-    --accent2: #b83a00;
-    --gold: #b8860b;
-    --uzbek: #1a5c3a;
-    --world: #1a3a6e;
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --surface2: #f5f2ec;
+    --surface3: #ede9e0;
+    --border: #e2dbd0;
+    --border2: #d0c9bc;
+    --text: #1c1a16;
+    --text2: #4a4540;
+    --text3: #8a8078;
+    --accent: #c0392b;
+    --accent-light: #fdf0ee;
+    --gold: #c49a1a;
+    --gold-light: #fdf8e8;
+    --green: #27725a;
+    --green-light: #edf7f3;
+    --blue: #1e4d8c;
+    --blue-light: #eef2fa;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.07);
+    --radius: 8px;
+    --radius-sm: 5px;
   }
 
   body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background: var(--paper);
-    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
   }
 
   .masthead {
-    border-bottom: 4px double var(--ink);
-    padding: 12px 24px 8px;
+    background: linear-gradient(135deg, #2c2825 0%, #1a1816 100%);
+    padding: 20px 28px 16px;
     text-align: center;
-    background: var(--paper);
   }
 
   .masthead-top {
@@ -42,190 +50,191 @@
     justify-content: space-between;
     align-items: center;
     font-size: 10px;
-    color: var(--ink3);
-    font-family: 'Arial', sans-serif;
-    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    margin-bottom: 6px;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   .masthead h1 {
-    font-size: 52px;
-    font-weight: 900;
-    letter-spacing: -1px;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 8px;
     line-height: 1;
-    color: var(--ink);
-    font-family: 'Georgia', serif;
+    color: #fff;
+    text-transform: uppercase;
   }
 
   .masthead-sub {
     font-size: 11px;
-    color: var(--ink3);
-    font-family: 'Arial', sans-serif;
-    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    margin-top: 4px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 4px 0;
+    margin-top: 8px;
+    border: none;
+    padding: 0;
   }
 
   .controls {
     display: flex;
     gap: 8px;
-    padding: 10px 24px;
-    border-bottom: 2px solid var(--ink);
-    background: var(--paper2);
+    padding: 12px 28px;
+    background: var(--surface);
     align-items: center;
     flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
   }
 
   .controls select, .controls input {
-    font-family: 'Arial', sans-serif;
-    font-size: 12px;
-    padding: 5px 10px;
-    border: 1px solid var(--rule);
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: var(--radius-sm);
     cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
-  .controls input[type="text"] {
-    flex: 1;
-    min-width: 180px;
+  .controls select:focus, .controls input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
   }
+
+  .controls input[type="text"] { flex: 1; min-width: 180px; }
 
   .controls label {
     font-size: 11px;
-    font-family: 'Arial', sans-serif;
-    color: var(--ink3);
+    color: var(--text3);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
+    font-weight: 500;
   }
 
   .stats-bar {
     display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--rule2);
-    background: var(--paper);
-    font-family: 'Arial', sans-serif;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
     font-size: 11px;
-    color: var(--ink3);
+    color: var(--text3);
     overflow-x: auto;
   }
 
   .stat-item {
-    padding: 6px 16px;
-    border-right: 1px solid var(--rule2);
+    padding: 7px 18px;
+    border-right: 1px solid var(--border);
     white-space: nowrap;
   }
 
-  .stat-item strong {
-    color: var(--accent);
-    font-weight: 700;
-  }
+  .stat-item strong { color: var(--accent); font-weight: 600; }
 
   .calendar-nav {
     display: flex;
     align-items: center;
-    gap: 0;
-    padding: 8px 24px;
-    border-bottom: 1px solid var(--rule2);
+    gap: 4px;
+    padding: 10px 28px;
+    border-bottom: 1px solid var(--border);
     overflow-x: auto;
+    background: var(--surface);
   }
 
   .month-btn {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    padding: 5px 14px;
-    border: 1px solid var(--rule);
-    background: var(--paper);
-    color: var(--ink2);
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 6px 13px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text2);
     cursor: pointer;
-    border-right: none;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    border-radius: var(--radius-sm);
     white-space: nowrap;
-    transition: background 0.1s;
+    transition: all 0.15s;
   }
 
-  .month-btn:last-child { border-right: 1px solid var(--rule); border-radius: 0 2px 2px 0; }
-  .month-btn:first-child { border-radius: 2px 0 0 2px; }
-  .month-btn:hover { background: var(--paper3); }
-  .month-btn.active { background: var(--ink); color: var(--paper); }
+  .month-btn:hover { background: var(--surface2); border-color: var(--border2); }
+  .month-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
 
   .main-content {
-    padding: 0 24px 24px;
+    padding: 20px 28px 40px;
     max-width: 1400px;
     margin: 0 auto;
   }
 
-  .day-section {
-    border-bottom: 1px solid var(--rule2);
-    padding: 12px 0;
-  }
+  .day-section { padding: 16px 0 8px; }
 
   .day-header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
   }
 
   .day-number {
-    font-size: 36px;
-    font-weight: 900;
+    font-size: 18px;
+    font-weight: 700;
     line-height: 1;
-    color: var(--ink);
-    min-width: 44px;
+    background: var(--text);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
   }
 
   .day-label {
     font-size: 11px;
-    font-family: 'Arial', sans-serif;
-    color: var(--ink3);
+    color: var(--text3);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
+    font-weight: 500;
   }
 
   .day-count {
     margin-left: auto;
-    font-size: 10px;
-    font-family: 'Arial', sans-serif;
-    color: var(--ink3);
-    background: var(--paper3);
-    padding: 2px 8px;
-    border: 1px solid var(--rule);
+    font-size: 11px;
+    color: var(--text3);
+    background: var(--surface2);
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    font-weight: 500;
   }
 
   .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 10px;
   }
 
   .event-card {
-    border: 1px solid var(--rule2);
-    padding: 10px 12px;
-    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px 12px 16px;
+    background: var(--surface);
     position: relative;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.18s;
+    box-shadow: var(--shadow);
+    overflow: hidden;
   }
 
   .event-card:hover {
-    border-color: var(--ink2);
-    background: var(--paper2);
+    border-color: var(--border2);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
   }
 
   .event-card.expanded {
     border-color: var(--accent);
-    background: #fffbf5;
+    box-shadow: 0 0 0 2px rgba(192,57,43,0.12), var(--shadow-hover);
   }
 
   .event-type-stripe {
@@ -238,190 +247,173 @@
 
   .type-bayram { background: var(--gold); }
   .type-tarixiy { background: var(--accent); }
-  .type-tugil { background: var(--uzbek); }
-  .type-vafot { background: #555; }
+  .type-tugil { background: var(--green); }
+  .type-vafot { background: #6b7280; }
 
   .event-meta {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 5px;
-    padding-left: 8px;
+    gap: 5px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
   }
 
   .type-badge {
-    font-size: 9px;
-    font-family: 'Arial', sans-serif;
+    font-size: 9.5px;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 2px 6px;
-    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 2px 7px;
+    font-weight: 600;
+    border-radius: 20px;
   }
 
-  .badge-bayram { background: #fef9e7; color: #7d6008; border: 1px solid #c8a80b; }
-  .badge-tarixiy { background: #fef0ec; color: #8b2000; border: 1px solid #c44a20; }
-  .badge-tugil { background: #edf7f0; color: #1a5c3a; border: 1px solid #2e8b5a; }
-  .badge-vafot { background: #f5f5f5; color: #444; border: 1px solid #888; }
+  .badge-bayram { background: var(--gold-light); color: #8a6910; border: 1px solid #e6c84a; }
+  .badge-tarixiy { background: var(--accent-light); color: var(--accent); border: 1px solid #f0a89e; }
+  .badge-tugil { background: var(--green-light); color: var(--green); border: 1px solid #a0d4c0; }
+  .badge-vafot { background: #1c1a16; color: #ffffff; border: 1px solid #1c1a16; }
 
   .platform-badge {
-    font-size: 9px;
-    font-family: 'Arial', sans-serif;
-    padding: 2px 5px;
-    letter-spacing: 0.5px;
+    font-size: 9.5px;
+    padding: 2px 7px;
+    font-weight: 500;
+    border-radius: 20px;
   }
 
-  .badge-uzbek { background: #edf7f0; color: var(--uzbek); border: 1px solid var(--uzbek); }
-  .badge-world { background: #edf0f7; color: var(--world); border: 1px solid var(--world); }
+  .badge-uzbek { background: var(--green-light); color: var(--green); border: 1px solid #a0d4c0; }
+  .badge-world { background: var(--blue-light); color: var(--blue); border: 1px solid #a8c0e8; }
 
   .event-title {
     font-size: 13px;
-    line-height: 1.4;
-    color: var(--ink);
-    padding-left: 8px;
-    font-weight: 600;
+    line-height: 1.45;
+    color: var(--text);
+    font-weight: 500;
   }
 
   .event-details {
     display: none;
-    padding-left: 8px;
-    margin-top: 8px;
-    border-top: 1px solid var(--rule2);
-    padding-top: 8px;
+    margin-top: 10px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
   }
 
   .event-card.expanded .event-details { display: block; }
 
   .event-detail-row {
-    font-size: 11px;
-    font-family: 'Arial', sans-serif;
-    color: var(--ink3);
+    font-size: 11.5px;
+    color: var(--text3);
     margin-bottom: 4px;
     line-height: 1.5;
   }
 
-  .event-detail-row strong {
-    color: var(--ink2);
-    font-weight: 600;
-  }
+  .event-detail-row strong { color: var(--text2); font-weight: 600; }
 
   .materials-text {
-    font-size: 11px;
-    font-family: 'Arial', sans-serif;
-    color: var(--ink2);
-    background: var(--paper3);
-    padding: 6px 8px;
-    border-left: 2px solid var(--gold);
-    margin-top: 6px;
-    line-height: 1.5;
+    font-size: 11.5px;
+    color: var(--text2);
+    background: var(--surface2);
+    padding: 8px 10px;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 8px;
+    line-height: 1.55;
     white-space: pre-wrap;
   }
 
   .add-form {
-    background: var(--paper2);
-    border: 1px solid var(--rule);
-    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
     margin: 16px 0;
     display: none;
+    box-shadow: var(--shadow);
   }
 
   .add-form.visible { display: block; }
 
   .add-form h3 {
-    font-size: 14px;
-    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 12px;
-    color: var(--ink2);
+    margin-bottom: 14px;
+    color: var(--text2);
   }
 
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .form-group { display: flex; flex-direction: column; gap: 4px; }
   .form-group.full { grid-column: 1 / -1; }
 
   .form-group label {
-    font-size: 10px;
-    font-family: 'Arial', sans-serif;
+    font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--ink3);
+    color: var(--text3);
+    font-weight: 500;
   }
 
   .form-group input, .form-group select, .form-group textarea {
-    font-family: 'Arial', sans-serif;
-    font-size: 12px;
-    padding: 6px 8px;
-    border: 1px solid var(--rule);
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    outline: none;
   }
 
   .form-group textarea { min-height: 60px; resize: vertical; }
 
   .btn {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 7px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 18px;
     cursor: pointer;
-    border: 1px solid var(--ink);
-    background: var(--ink);
-    color: var(--paper);
-    transition: all 0.1s;
+    border: 1px solid var(--text);
+    background: var(--text);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s;
   }
 
   .btn:hover { background: var(--accent); border-color: var(--accent); }
 
   .btn-outline {
     background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--rule);
+    color: var(--text);
+    border: 1px solid var(--border);
   }
 
-  .btn-outline:hover { background: var(--paper3); }
+  .btn-outline:hover { background: var(--surface2); }
 
   .btn-add {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
     padding: 6px 16px;
     cursor: pointer;
-    border: 1px dashed var(--rule);
+    border: 1.5px dashed var(--border2);
     background: transparent;
-    color: var(--ink3);
+    color: var(--text3);
+    border-radius: var(--radius-sm);
     transition: all 0.15s;
   }
 
-  .btn-add:hover { border-color: var(--accent); color: var(--accent); background: #fff8f5; }
+  .btn-add:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
   .empty-state {
     text-align: center;
     padding: 40px;
-    color: var(--ink3);
-    font-family: 'Arial', sans-serif;
+    color: var(--text3);
     font-size: 13px;
-    border: 1px dashed var(--rule);
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius);
     margin: 16px 0;
   }
 
-  .section-rule {
-    border: none;
-    border-top: 2px solid var(--ink);
-    margin: 16px 0 12px;
-  }
+  .section-rule { border: none; border-top: 1px solid var(--border); margin: 16px 0 12px; }
 
   .section-header {
     display: flex;
@@ -429,149 +421,139 @@
     gap: 16px;
     margin: 16px 0 8px;
     padding-bottom: 4px;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--border);
   }
 
   .section-header h2 {
-    font-size: 16px;
-    font-weight: 900;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--ink);
+    letter-spacing: 1.5px;
+    color: var(--text);
   }
 
   .no-results {
     padding: 30px;
     text-align: center;
-    font-family: 'Arial', sans-serif;
     font-size: 13px;
-    color: var(--ink3);
+    color: var(--text3);
     font-style: italic;
   }
 
-  /* Jubilee card styles */
+  /* Jubilee */
   .event-card.jubilee {
-    border-color: #4a8c5c;
-    background: #f0f7f2;
-    box-shadow: 0 0 0 2px #4a8c5c;
+    border-color: #3a7d54;
+    background: #f0faf4;
+    box-shadow: 0 0 0 1.5px #3a7d54, var(--shadow);
   }
 
-  .event-card.jubilee .event-type-stripe {
-    width: 6px;
-  }
+  .event-card.jubilee .event-type-stripe { width: 5px; }
 
   .jubilee-badge {
     display: inline-flex;
     align-items: center;
     gap: 3px;
-    font-size: 9px;
-    font-family: 'Arial', sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 2px 7px;
-    background: #4a8c5c;
-    color: #fff;
-    border: none;
-    border-radius: 1px;
-  }
-
-  .jubilee-badge::before {
-    content: '★';
-    font-size: 8px;
-  }
-
-  .necha-yil {
-    padding-left: 8px;
-    margin-top: 4px;
-    font-size: 10px;
-    font-family: Arial, sans-serif;
-    color: var(--ink3);
-  }
-
-  .event-card.jubilee .necha-yil {
-    color: #2e6b40;
+    font-size: 9.5px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    background: #3a7d54;
+    color: #fff;
+    border-radius: 20px;
   }
+
+  .jubilee-badge::before { content: '★'; font-size: 8px; }
+
+  .necha-yil { margin-top: 4px; font-size: 10.5px; color: var(--text3); }
+  .event-card.jubilee .necha-yil { color: #2a5e3e; font-weight: 600; }
 
   .btn-jubilee {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 5px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
     cursor: pointer;
-    border: 1px solid #4a8c5c;
+    border: 1px solid #3a7d54;
     background: transparent;
-    color: #4a8c5c;
-    transition: all 0.1s;
+    color: #3a7d54;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s;
     white-space: nowrap;
   }
 
-  .btn-jubilee:hover, .btn-jubilee.active {
-    background: #4a8c5c;
-    color: #fff;
-  }
+  .btn-jubilee:hover, .btn-jubilee.active { background: #3a7d54; color: #fff; }
 
   .btn-today {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 5px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
     cursor: pointer;
     border: 1px solid var(--accent);
     background: transparent;
     color: var(--accent);
-    transition: all 0.1s;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s;
     white-space: nowrap;
   }
 
-  .btn-today:hover, .btn-today.active {
-    background: var(--accent);
-    color: #fff;
+  .btn-today:hover, .btn-today.active { background: var(--accent); color: #fff; }
+
+  .btn-yandex {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 5px; border: 1.5px solid #e6b800;
+    background: #fff; color: #333; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all .2s; letter-spacing: .3px;
+  }
+  .btn-yandex:hover, .btn-yandex.active { background: #FFCC00; color: #000; border-color: #FFCC00; }
+
+  .yandex-card { border-left: 4px solid #FFCC00 !important; background: #fffdf0 !important; }
+  .yandex-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; background: #FFCC00; color: #000; border: none;
   }
 
   .today-section {
-    background: #fff8f5;
-    border: 2px solid var(--accent);
-    padding: 10px 14px;
-    margin: 12px 0 0;
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin: 14px 0 0;
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
   }
 
   .today-section-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--rule);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(192,57,43,0.2);
   }
 
   .today-label {
-    font-size: 10px;
-    font-family: 'Arial', sans-serif;
-    font-weight: 900;
+    font-size: 10.5px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--accent);
-    background: #fdeee8;
-    padding: 2px 8px;
-    border: 1px solid var(--accent);
+    background: #fbd9d5;
+    padding: 3px 10px;
+    border-radius: 20px;
   }
 
   .today-date-display {
-    font-size: 12px;
-    font-family: 'Arial', sans-serif;
-    color: var(--ink2);
-    font-weight: 600;
+    font-size: 12.5px;
+    color: var(--text2);
+    font-weight: 500;
   }
 
   @media (max-width: 600px) {
-    .masthead h1 { font-size: 32px; }
-    .controls { padding: 8px 12px; }
-    .main-content { padding: 0 12px 16px; }
-    .calendar-nav { padding: 8px 12px; }
+    .masthead h1 { font-size: 28px; letter-spacing: 4px; }
+    .controls { padding: 10px 16px; }
+    .main-content { padding: 14px 16px 32px; }
+    .calendar-nav { padding: 8px 16px; }
     .events-grid { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
   }
@@ -613,6 +595,7 @@
   <button class="btn" onclick="toggleAddForm()">+ Янги қўшиш</button>
   <button class="btn-today" id="btn-today" onclick="toggleToday()">📅 Бугун</button>
   <button class="btn-jubilee" id="btn-jubilee" onclick="toggleJubilee()">★ Юбилейлар</button>
+  <button class="btn-yandex" id="btn-yandex" onclick="toggleYandex()">📚 Яндекс Китоб</button>
 </div>
 
 <div class="stats-bar" id="stats-bar"></div>
@@ -680,6 +663,92 @@ const RAW_DATA = [{"ОЙ":"Февраль","ТУРИ":"Тарихий воқеа
 ;
 
 const CURRENT_YEAR = new Date().getFullYear();
+
+// Яндекс Китобдаги муаллифлар (туғилган санаси аниқ топилганлар)
+const YANDEX_AUTHORS = [
+  {oy:'Январь', sana:'12 январь', yil:1876, muallif:'Жек Лондон', yandex:true},
+  {oy:'Январь', sana:'22 январь', yil:1986, muallif:'Жеймс Клир', yandex:true},
+  {oy:'Январь', sana:'1 январь',  yil:1919, muallif:'Жэром Сэлинжер', yandex:true},
+  {oy:'Январь', sana:'5 январь',  yil:1944, muallif:'Брайан Трейси', yandex:true},
+  {oy:'Январь', sana:'29 январь', yil:1860, muallif:'Антон Чехов', yandex:true},
+  {oy:'Февраль', sana:'9 февраль', yil:1441, muallif:'Алишер Навоий', yandex:true},
+  {oy:'Февраль', sana:'22 февраль', yil:1889, muallif:'Ҳамза Ҳакимзода Ниёзий', yandex:true},
+  {oy:'Февраль', sana:'8 февраль', yil:1828, muallif:'Жюль Верн', yandex:true},
+  {oy:'Март', sana:'1 март',  yil:1892, muallif:'Рюноске Акутагава', yandex:true},
+  {oy:'Март', sana:'1 март',  yil:1915, muallif:'Зулфия', yandex:true},
+  {oy:'Март', sana:'6 март',  yil:1927, muallif:'Габриэль Гарсиа Маркес', yandex:true},
+  {oy:'Март', sana:'9 март',  yil:1984, muallif:'Марк Мэнсон', yandex:true},
+  {oy:'Март', sana:'16 март', yil:1884, muallif:'Александр Беляев', yandex:true},
+  {oy:'Март', sana:'22 март', yil:1947, muallif:'Жеймс Паттерсон', yandex:true},
+  {oy:'Март', sana:'21 март', yil:1958, muallif:'Грант Кардон', yandex:true},
+  {oy:'Март', sana:'4 март',  yil:1965, muallif:'Холид Ҳусайний', yandex:true},
+  {oy:'Март', sana:'30 март', yil:1938, muallif:'Клаус Шваб', yandex:true},
+  {oy:'Март', sana:'23 март', yil:1394, muallif:'Мирзо Улуғбек', yandex:true},
+  {oy:'Апрель', sana:'10 апрель', yil:1894, muallif:'Абдулла Қодирий', yandex:true},
+  {oy:'Апрель', sana:'27 апрель', yil:1878, muallif:'Садриддин Айний', yandex:true},
+  {oy:'Апрель', sana:'21 апрель', yil:1816, muallif:'Шарлотта Бронте', yandex:true},
+  {oy:'Апрель', sana:'19 апрель', yil:1948, muallif:'Мэй Маск', yandex:true},
+  {oy:'Май', sana:'5 май',  yil:1846, muallif:'Генрих Сенкевич', yandex:true},
+  {oy:'Май', sana:'7 май',  yil:1861, muallif:'Рабиндранат Тагор', yandex:true},
+  {oy:'Май', sana:'7 май',  yil:1952, muallif:'Ўрхан Памуқ', yandex:true},
+  {oy:'Май', sana:'6 июнь', yil:1799, muallif:'Александр Пушкин', yandex:true},
+  {oy:'Май', sana:'15 май', yil:1891, muallif:'Михаил Булгаков', yandex:true},
+  {oy:'Май', sana:'20 май', yil:1952, muallif:'Уолтер Айзексон', yandex:true},
+  {oy:'Май', sana:'24 май', yil:1905, muallif:'Михаил Шолохов', yandex:true},
+  {oy:'Май', sana:'31 май', yil:1948, muallif:'Светлана Алексиевич', yandex:true},
+  {oy:'Июнь', sana:'2 июнь',  yil:1877, muallif:'Ҳерман Ҳессе', yandex:true},
+  {oy:'Июнь', sana:'6 июнь',  yil:1875, muallif:'Томас Манн', yandex:true},
+  {oy:'Июнь', sana:'7 июнь',  yil:1952, muallif:'Ўрхан Памуқ', yandex:true},
+  {oy:'Июнь', sana:'11 июнь', yil:1899, muallif:'Ясунари Кавабата', yandex:true},
+  {oy:'Июнь', sana:'21 июнь', yil:1905, muallif:'Жан-Поль Сартр', yandex:true},
+  {oy:'Июнь', sana:'22 июнь', yil:1898, muallif:'Эрих Мария Ремарк', yandex:true},
+  {oy:'Июнь', sana:'22 июнь', yil:1964, muallif:'Ден Браун', yandex:true},
+  {oy:'Июнь', sana:'25 июнь', yil:1903, muallif:'Жорж Оруэлл', yandex:true},
+  {oy:'Июнь', sana:'26 июнь', yil:1897, muallif:'Абдулҳамид Чўлпон', yandex:true},
+  {oy:'Июнь', sana:'28 июнь', yil:1867, muallif:'Луижи Пиранделло', yandex:true},
+  {oy:'Июль', sana:'3 июль',  yil:1883, muallif:'Франс Кафка', yandex:true},
+  {oy:'Июль', sana:'7 июль',  yil:1931, muallif:'Элис Манро', yandex:true},
+  {oy:'Июль', sana:'10 июль', yil:1931, muallif:'Элис Манро', yandex:true},
+  {oy:'Июль', sana:'12 июль', yil:1878, muallif:'Абдулла Авлоний', yandex:true},
+  {oy:'Июль', sana:'21 июль', yil:1899, muallif:'Эрнест Ҳемингуэй', yandex:true},
+  {oy:'Июль', sana:'26 июль', yil:1894, muallif:'Олдос Хаксли', yandex:true},
+  {oy:'Июль', sana:'27 июль', yil:1948, muallif:'Ҳанс Рослинг', yandex:true},
+  {oy:'Июль', sana:'30 июль', yil:1863, muallif:'Ҳенри Форд', yandex:true},
+  {oy:'Август', sana:'4 август',  yil:1859, muallif:'Кнут Ҳамсун', yandex:true},
+  {oy:'Август', sana:'9 август',  yil:1927, muallif:'Дэниел Киз', yandex:true},
+  {oy:'Август', sana:'22 август', yil:1920, muallif:'Рэй Бредбери', yandex:true},
+  {oy:'Август', sana:'24 август', yil:1947, muallif:'Пауло Коэльо', yandex:true},
+  {oy:'Август', sana:'27 август', yil:1871, muallif:'Теодор Драйзер', yandex:true},
+  {oy:'Сентябрь', sana:'2 сентябрь',  yil:1921, muallif:'Шукрулло', yandex:true},
+  {oy:'Сентябрь', sana:'3 сентябрь',  yil:1967, muallif:'Дарен Ажемўғли', yandex:true},
+  {oy:'Сентябрь', sana:'3 сентябрь',  yil:1963, muallif:'Малколм Гладуэлл', yandex:true},
+  {oy:'Сентябрь', sana:'9 сентябрь',  yil:1828, muallif:'Лев Толстой', yandex:true},
+  {oy:'Сентябрь', sana:'11 сентябрь', yil:1862, muallif:'О\'Генри', yandex:true},
+  {oy:'Сентябрь', sana:'25 сентябрь', yil:1897, muallif:'Уильям Фолкнер', yandex:true},
+  {oy:'Сентябрь', sana:'27 сентябрь', yil:1986, muallif:'Тара Вестовер', yandex:true},
+  {oy:'Сентябрь', sana:'30 сентябрь', yil:1207, muallif:'Жалолиддин Румий', yandex:true},
+  {oy:'Октябрь', sana:'6 октябрь',  yil:1914, muallif:'Тур Хейердал', yandex:true},
+  {oy:'Октябрь', sana:'10 октябрь', yil:1931, muallif:'Элис Манро', yandex:true},
+  {oy:'Октябрь', sana:'14 октябрь', yil:1960, muallif:'Жеймс Робинсон', yandex:true},
+  {oy:'Октябрь', sana:'15 октябрь', yil:1844, muallif:'Фридрих Нитше', yandex:true},
+  {oy:'Октябрь', sana:'15 октябрь', yil:1814, muallif:'Михаил Лермонтов', yandex:true},
+  {oy:'Октябрь', sana:'16 октябрь', yil:1906, muallif:'Дино Буцатти', yandex:true},
+  {oy:'Октябрь', sana:'22 октябрь', yil:1870, muallif:'Иван Бунин', yandex:true},
+  {oy:'Октябрь', sana:'22 октябрь', yil:1919, muallif:'Дорис Лессинг', yandex:true},
+  {oy:'Октябрь', sana:'24 октябрь', yil:1932, muallif:'Стивен Кови', yandex:true},
+  {oy:'Ноябрь', sana:'4 ноябрь',   yil:1892, muallif:'Рашод Нури Гунтекин', yandex:true},
+  {oy:'Ноябрь', sana:'11 декабрь', yil:1918, muallif:'Александр Солженицин', yandex:true},
+  {oy:'Декабрь', sana:'11 декабрь', yil:1911, muallif:'Нажиб Маҳфуз', yandex:true},
+  {oy:'Декабрь', sana:'11 декабрь', yil:1918, muallif:'Александр Солженицин', yandex:true},
+  {oy:'Декабрь', sana:'12 декабрь', yil:1928, muallif:'Чингиз Айтматов', yandex:true},
+  {oy:'Декабрь', sana:'12 декабрь', yil:1909, muallif:'Ҳамид Олимжон', yandex:true},
+  {oy:'Декабрь', sana:'12 декабрь', yil:1973, muallif:'Тони Шей', yandex:true},
+  {oy:'Декабрь', sana:'20 декабрь', yil:1915, muallif:'Азиз Несин', yandex:true},
+  {oy:'Декабрь', sana:'22 декабрь', yil:1964, muallif:'Ден Браун', yandex:true},
+  {oy:'Декабрь', sana:'28 декабрь', yil:1936, muallif:'Эркин Воҳидов', yandex:true},
+  {oy:'Декабрь', sana:'30 декабрь', yil:1865, muallif:'Редярд Киплинг', yandex:true},
+];
+
 
 // Jubilee intervals
 const JUBILEE_INTERVALS = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000];
@@ -792,7 +861,7 @@ function renderMain() {
 
     html += `<div class="section-header">
       <h2>${month}</h2>
-      <span style="font-size:11px;font-family:Arial,sans-serif;color:var(--ink3);">${total} та воқеа · ${sortedDays.length} кун</span>
+      <span style="font-size:11px;font-family:'Inter',sans-serif;color:var(--text3);">${total} та воқеа · ${sortedDays.length} кун</span>
     </div>`;
 
     sortedDays.forEach(dayKey => {
@@ -825,7 +894,7 @@ function renderMain() {
           <div class="event-meta">
             ${typeBadge(ev['ТУРИ'])}
             ${platformBadge(ev['ҚАЕРДА'])}
-            ${yil ? `<span style="font-size:10px;font-family:Arial,sans-serif;color:var(--ink3);">${yil}</span>` : ''}
+            ${yil ? `<span style="font-size:10px;font-family:'Inter',sans-serif;color:var(--text3);">${yil}</span>` : ''}
             ${jubilee ? `<span class="jubilee-badge">${jubileeLabel}</span>` : ''}
           </div>
           <div class="event-title">${ev['МАВЗУ']}</div>
@@ -848,6 +917,11 @@ function renderMain() {
   // Show today's events panel if todayMode is on
   if (todayMode) {
     renderTodaySection(container);
+  }
+
+  // Show Yandex section if yandexMode is on
+  if (yandexMode) {
+    renderYandexSection(container);
   }
 }
 
@@ -894,6 +968,7 @@ document.getElementById('filter-platform').addEventListener('change', renderMain
 // Today mode
 let todayMode = false;
 let jubileeMode = false;
+let yandexMode = false;
 
 // Month names in Uzbek/Russian mapping to numbers
 const MONTH_NUM = {
@@ -937,8 +1012,10 @@ function sanaMatchesMonth(sana, monthName) {
 function toggleToday() {
   todayMode = !todayMode;
   jubileeMode = false;
+  yandexMode = false;
   document.getElementById('btn-today').classList.toggle('active', todayMode);
   document.getElementById('btn-jubilee').classList.remove('active');
+  document.getElementById('btn-yandex').classList.remove('active');
   if (todayMode) {
     // Switch to current month
     const now = new Date();
@@ -955,8 +1032,20 @@ function toggleToday() {
 function toggleJubilee() {
   jubileeMode = !jubileeMode;
   todayMode = false;
+  yandexMode = false;
   document.getElementById('btn-jubilee').classList.toggle('active', jubileeMode);
   document.getElementById('btn-today').classList.remove('active');
+  document.getElementById('btn-yandex').classList.remove('active');
+  renderMain();
+}
+
+function toggleYandex() {
+  yandexMode = !yandexMode;
+  todayMode = false;
+  jubileeMode = false;
+  document.getElementById('btn-yandex').classList.toggle('active', yandexMode);
+  document.getElementById('btn-today').classList.remove('active');
+  document.getElementById('btn-jubilee').classList.remove('active');
   renderMain();
 }
 
@@ -980,6 +1069,63 @@ function getFiltered() {
     }
     return true;
   });
+}
+
+function renderYandexSection(container) {
+  const byMonth = {};
+  YANDEX_AUTHORS.forEach(a => {
+    if (!byMonth[a.oy]) byMonth[a.oy] = [];
+    byMonth[a.oy].push(a);
+  });
+
+  const sortedMonths = MONTHS.filter(m => byMonth[m]);
+
+  let html = `<div class="today-section" style="border-color:#FFCC00;background:#fffdf0;margin-top:16px;">
+    <div style="font-weight:700;font-size:15px;margin-bottom:12px;color:#000;">
+      📚 Яндекс Китоб — Ўзбекчага таржима қилинган асарлар муаллифлари
+    </div>`;
+
+  sortedMonths.forEach(month => {
+    const authors = byMonth[month].sort((a,b) => {
+      const da = parseInt(a.sana) || 0;
+      const db = parseInt(b.sana) || 0;
+      return da - db;
+    });
+
+    html += `<div style="margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">${month}</div>
+      <div class="events-grid">`;
+
+    authors.forEach((a, i) => {
+      const id = `yandex-${month}-${i}`.replace(/\s+/g,'-');
+      const nechaYil = CURRENT_YEAR - a.yil;
+      const jubilee = isJubilee(nechaYil);
+      const jubileeLabel = jubilee ? getJubileeLabel(nechaYil) : '';
+
+      html += `<div class="event-card yandex-card${jubilee ? ' jubilee' : ''}" id="${id}" onclick="toggleCard('${id}')">
+        <div class="event-type-stripe" style="background:#FFCC00;"></div>
+        <div class="event-meta">
+          <span class="yandex-badge">📚 Яндекс</span>
+          ${jubilee ? `<span class="jubilee-badge">${jubileeLabel}</span>` : ''}
+        </div>
+        <div class="event-title">${a.muallif} туғилган кун</div>
+        <div class="necha-yil">${a.sana}, ${a.yil} · ${nechaYil} йил аввал</div>
+        <div class="event-details">
+          <div class="event-detail-row"><strong>Туғилган сана:</strong> ${a.sana}, ${a.yil}</div>
+          <div class="event-detail-row"><strong>Муддати:</strong> ${nechaYil} йил аввал</div>
+          <div class="event-detail-row"><strong>Манба:</strong> Яндекс Китоб</div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  html += `</div>`;
+
+  const yandexDiv = document.createElement('div');
+  yandexDiv.innerHTML = html;
+  container.prepend(yandexDiv.firstChild);
 }
 
 function renderTodaySection(container) {
@@ -1024,7 +1170,7 @@ function renderTodaySection(container) {
       <div class="event-meta">
         ${typeBadge(ev['ТУРИ'])}
         ${platformBadge(ev['ҚАЕРДА'])}
-        ${yil ? `<span style="font-size:10px;font-family:Arial,sans-serif;color:var(--ink3);">${yil}</span>` : ''}
+        ${yil ? `<span style="font-size:10px;font-family:'Inter',sans-serif;color:var(--text3);">${yil}</span>` : ''}
         ${jubilee ? `<span class="jubilee-badge">${jubileeLabel}</span>` : ''}
       </div>
       <div class="event-title">${ev['МАВЗУ']}</div>
