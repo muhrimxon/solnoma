@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buxoro Xonligi va Amirligi Hukmdorlari</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9922A;
+    --gold-light: #E8B84B;
+    --gold-pale: #F5E6C2;
+    --deep: #1A0F00;
+    --ink: #2C1A00;
+    --parchment: #FBF5E6;
+    --parchment-dark: #F0E6CC;
+    --blue-royal: #1B3A6B;
+    --blue-light: #2B5BA8;
+    --blue-pale: #D6E4F7;
+    --divider: rgba(201,146,42,0.25);
+    --shadow: rgba(26,15,0,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: var(--deep);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,146,42,0.18) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,146,42,0.06) 39px, rgba(201,146,42,0.06) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,146,42,0.06) 39px, rgba(201,146,42,0.06) 40px);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 24px 52px;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .header-ornament span {
+    color: var(--gold);
+    font-size: 22px;
+    opacity: 0.7;
+  }
+
+  .header-ornament .line {
+    width: 60px;
+    height: 0.5px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .site-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 900;
+    color: var(--gold-light);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .site-header .subtitle {
+    font-size: clamp(14px, 2vw, 17px);
+    color: rgba(232,184,75,0.6);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+  }
+
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border: 0.5px solid rgba(201,146,42,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .hstat {
+    flex: 1;
+    padding: 14px 16px;
+    text-align: center;
+    border-right: 0.5px solid rgba(201,146,42,0.3);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .hstat:last-child { border-right: none; }
+
+  .hstat-num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .hstat-lbl {
+    display: block;
+    font-size: 11px;
+    color: rgba(232,184,75,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ===== NAVIGATION ===== */
+  .nav-wrap {
+    background: #fff;
+    border-bottom: 1.5px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 14px 22px;
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #7A6040;
+    background: transparent;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-btn:hover { color: var(--gold); background: rgba(201,146,42,0.04); }
+
+  .nav-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-weight: 600;
+    background: rgba(201,146,42,0.06);
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ===== ERA HEADING ===== */
+  .era-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 20px;
+    padding-left: 28px;
+  }
+
+  .era-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .era-badge.khanate {
+    background: rgba(201,146,42,0.12);
+    color: #8A5C10;
+    border: 0.5px solid rgba(201,146,42,0.4);
+  }
+
+  .era-badge.amirate {
+    background: rgba(27,58,107,0.1);
+    color: var(--blue-royal);
+    border: 0.5px solid rgba(27,58,107,0.3);
+  }
+
+  .era-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--divider);
+  }
+
+  .era-years {
+    font-size: 13px;
+    color: #A08050;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,146,42,0.2) 100%);
+  }
+
+  /* ===== RULER CARD ===== */
+  .ruler {
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .ruler-dot {
+    position: absolute;
+    left: -28px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--parchment);
+    transition: all 0.2s;
+    z-index: 2;
+  }
+
+  .ruler.amirate .ruler-dot {
+    border-color: var(--blue-royal);
+  }
+
+  .ruler:hover .ruler-dot { transform: scale(1.4); }
+
+  .ruler-card {
+    display: flex;
+    align-items: stretch;
+    border: 0.5px solid rgba(201,146,42,0.3);
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    overflow: hidden;
+  }
+
+  .ruler-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 3px 16px rgba(201,146,42,0.12);
+    transform: translateX(2px);
+  }
+
+  .ruler.amirate .ruler-card {
+    border-color: rgba(27,58,107,0.25);
+  }
+
+  .ruler.amirate .ruler-card:hover {
+    border-color: var(--blue-royal);
+    box-shadow: 0 3px 16px rgba(27,58,107,0.1);
+  }
+
+  .ruler-accent {
+    width: 3px;
+    flex-shrink: 0;
+    background: var(--gold);
+  }
+
+  .ruler.amirate .ruler-accent { background: var(--blue-royal); }
+
+  .ruler-body {
+    flex: 1;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ruler-left { flex: 1; min-width: 0; }
+
+  .ruler-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .ruler-title-label {
+    font-size: 12px;
+    color: #9A7840;
+    letter-spacing: 0.04em;
+  }
+
+  .ruler.amirate .ruler-title-label { color: #4A6A9A; }
+
+  .ruler-right { text-align: right; flex-shrink: 0; }
+
+  .ruler-reign {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .ruler-dur {
+    font-size: 12px;
+    color: #A08050;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+
+  .ruler.amirate .ruler-dur { color: #7090C0; }
+
+  .ruler-toggle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(201,146,42,0.1);
+    border: 0.5px solid rgba(201,146,42,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--gold);
+    transition: transform 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .ruler.open .ruler-toggle {
+    transform: rotate(180deg);
+    background: rgba(201,146,42,0.2);
+  }
+
+  .ruler.amirate .ruler-toggle {
+    background: rgba(27,58,107,0.08);
+    border-color: rgba(27,58,107,0.25);
+    color: var(--blue-royal);
+  }
+
+  .ruler.amirate.open .ruler-toggle { background: rgba(27,58,107,0.16); }
+
+  /* ===== DETAIL PANEL ===== */
+  .ruler-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: var(--parchment);
+    border: 0.5px solid rgba(201,146,42,0.3);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: -2px;
+  }
+
+  .ruler.open .ruler-detail { max-height: 200px; }
+
+  .ruler.amirate .ruler-detail {
+    background: #F0F5FF;
+    border-color: rgba(27,58,107,0.2);
+  }
+
+  .ruler-detail-inner {
+    padding: 14px 16px 16px 19px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4A3010;
+  }
+
+  .ruler.amirate .ruler-detail-inner { color: #1A2E50; }
+
+  /* ===== OVERVIEW SECTION ===== */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 36px 0;
+  }
+
+  .overview-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid var(--divider);
+  }
+
+  .overview-card-head {
+    padding: 18px 20px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .overview-card-head.khanate-head { background: linear-gradient(135deg, #3D2000 0%, #5A3010 100%); }
+  .overview-card-head.amirate-head { background: linear-gradient(135deg, #0A1E40 0%, #1B3A6B 100%); }
+
+  .overview-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .overview-card-years {
+    font-size: 12px;
+    color: rgba(232,184,75,0.6);
+    margin-top: 4px;
+  }
+
+  .overview-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .overview-card-body {
+    padding: 16px 20px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5A4020;
+  }
+
+  .overview-card-body.amirate-body { color: #1A2E50; }
+
+  .sulola-list {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 0.5px solid var(--divider);
+  }
+
+  .sulola-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 0.5px solid rgba(201,146,42,0.1);
+    font-size: 13px;
+  }
+
+  .sulola-item:last-child { border-bottom: none; }
+
+  .sulola-name { font-weight: 500; color: var(--ink); }
+  .sulola-dates { color: #9A7840; font-style: italic; }
+
+  /* ===== INTRO TEXT ===== */
+  .intro-box {
+    background: #fff;
+    border: 0.5px solid var(--divider);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px;
+    margin: 28px 0 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #5A4020;
+    font-style: italic;
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--deep);
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .site-footer p {
+    font-size: 13px;
+    color: rgba(232,184,75,0.4);
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--parchment-dark); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,146,42,0.4); border-radius: 3px; }
+
+  @media (max-width: 600px) {
+    .ruler-name { font-size: 14px; }
+    .ruler-body { padding: 10px 12px; gap: 8px; }
+    .ruler-reign { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-ornament">
+      <div class="line"></div>
+      <span>✦</span>
+      <span>✦</span>
+      <span>✦</span>
+      <div class="line"></div>
+    </div>
+    <h1>Buxoro Xonligi va Amirligi</h1>
+    <p class="subtitle">Barcha hukmdorlarning tarixiy taymlayn — 1500–1920</p>
+    <div class="header-stats">
+      <div class="hstat"><span class="hstat-num">420</span><span class="hstat-lbl">Yillik tarix</span></div>
+      <div class="hstat"><span class="hstat-num">38</span><span class="hstat-lbl">Hukmdor</span></div>
+      <div class="hstat"><span class="hstat-num">4</span><span class="hstat-lbl">Sulola</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showTab('xonlik', this)">Buxoro Xonligi</button>
+    <button class="nav-btn" onclick="showTab('amirligi', this)">Buxoro Amirligi</button>
+    <button class="nav-btn" onclick="showTab('umumiy', this)">Umumiy Ma'lumot</button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ===== XONLIK ===== -->
+  <div id="xonlik" class="section active">
+    <div class="intro-box">
+      Buxoro xonligi 1500 yilda Muhammad Shayboniy tomonidan asos solingan. Uch sulola — Shayboniylar, Ashtarxoniylar va Mang'itlar — ketma-ket hukmronlik qilgan. Xonlik O'rta Osiyoning eng qudratli davlatlaridan biri bo'lib, Ipak yo'lining muhim markazini nazorat qilgan.
+    </div>
+
+    <div class="era-heading">
+      <span class="era-badge khanate">Shayboniylar sulolasi</span>
+      <div class="era-line"></div>
+      <span class="era-years">1500 – 1598</span>
+    </div>
+
+    <div class="timeline" id="tl1"></div>
+
+    <div class="era-heading">
+      <span class="era-badge khanate">Ashtarxoniylar (Joniylar) sulolasi</span>
+      <div class="era-line"></div>
+      <span class="era-years">1599 – 1758</span>
+    </div>
+
+    <div class="timeline" id="tl2"></div>
+
+    <div class="era-heading">
+      <span class="era-badge khanate">Mang'itlar — Xon davri</span>
+      <div class="era-line"></div>
+      <span class="era-years">1758 – 1785</span>
+    </div>
+
+    <div class="timeline" id="tl3"></div>
+  </div>
+
+  <!-- ===== AMIRLIGI ===== -->
+  <div id="amirligi" class="section">
+    <div class="intro-box" style="border-left-color: var(--blue-royal);">
+      1785 yilda Mang'it amiri Shohmurod xonlik o'rniga amirlikni e'lon qildi. Buxoro amirligi 1868 yildan Rossiya imperiyasining vassali bo'lib qoldi. 1920 yilda sovet qo'shinlari tomonidan tugatildi va Buxoro Xalq Sovet Respublikasi tashkil etildi.
+    </div>
+
+    <div class="era-heading">
+      <span class="era-badge amirate">Mang'itlar sulolasi — Amirlar</span>
+      <div class="era-line"></div>
+      <span class="era-years">1785 – 1920</span>
+    </div>
+
+    <div class="timeline" id="tl4"></div>
+  </div>
+
+  <!-- ===== UMUMIY ===== -->
+  <div id="umumiy" class="section">
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="overview-card-head khanate-head">
+          <div>
+            <div class="overview-card-title">Buxoro Xonligi</div>
+            <div class="overview-card-years">1500 – 1785 yillar</div>
+          </div>
+          <div class="overview-card-num">30</div>
+        </div>
+        <div class="overview-card-body">
+          Muhammad Shayboniy tomonidan asos solingan. O'rta Osiyoning eng qudratli davlati sifatida Ipak yo'lini nazorat qildi. Uch sulola ketma-ket hukmronlik qildi.
+          <div class="sulola-list">
+            <div class="sulola-item"><span class="sulola-name">Shayboniylar</span><span class="sulola-dates">1500–1598</span></div>
+            <div class="sulola-item"><span class="sulola-name">Ashtarxoniylar</span><span class="sulola-dates">1599–1758</span></div>
+            <div class="sulola-item"><span class="sulola-name">Mang'itlar (xon)</span><span class="sulola-dates">1758–1785</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-head amirate-head">
+          <div>
+            <div class="overview-card-title">Buxoro Amirligi</div>
+            <div class="overview-card-years">1785 – 1920 yillar</div>
+          </div>
+          <div class="overview-card-num">8</div>
+        </div>
+        <div class="overview-card-body amirate-body">
+          Mang'it sulolasi Shohmurod tomonidan asos solingan. 1868 yildan Rossiya vassali. 1920 yilda Qizil Armiya tomonidan tugatildi.
+          <div class="sulola-list" style="border-top-color: rgba(27,58,107,0.15);">
+            <div class="sulola-item" style="border-color: rgba(27,58,107,0.08);"><span class="sulola-name">Mang'itlar (amir)</span><span class="sulola-dates" style="color:#4A6A9A">1785–1920</span></div>
+            <div class="sulola-item" style="border-color: rgba(27,58,107,0.08);"><span class="sulola-name">Jami 8 amir</span><span class="sulola-dates" style="color:#4A6A9A">135 yil</span></div>
+            <div class="sulola-item" style="border-color: rgba(27,58,107,0.08);"><span class="sulola-name">Sovet davri boshlanishi</span><span class="sulola-dates" style="color:#4A6A9A">1920 yil</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-heading" style="margin-top: 20px;">
+      <span class="era-badge khanate">Muhim tarixiy voqealar</span>
+      <div class="era-line"></div>
+    </div>
+
+    <div style="background:#fff; border: 0.5px solid var(--divider); border-radius: 10px; overflow:hidden; margin-top: 0;">
+      <div id="events-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Buxoro Xonligi va Amirligi Hukmdorlari Taymlayn &mdash; 1500–1920</p>
+</footer>
+
+<script>
+const shayboniylar = [
+  { name: "Muhammad Shayboniy", title: "Xon", reign: "1500–1510", dur: "10 yil", type: "khanate", info: "Buxoro xonligining asoschisi. Hirot, Samarqand va Xorazmni zabt etdi. Movarounnahr ustidan nazorat o'rnatdi. 1510 yilda Ismoil Safaviy bilan Marvdagi jangda halok bo'ldi." },
+  { name: "Ko'chkunchixon", title: "Xon", reign: "1510–1530", dur: "20 yil", type: "khanate", info: "Shayboniylarni qayta tikladi. Buxoroni poytaxt qilib belgiladi. Samarqand bilan Buxoro o'rtasida siyosiy muvozanatni saqladi." },
+  { name: "Abu Said Xon", title: "Xon", reign: "1530–1533", dur: "3 yil", type: "khanate", info: "Ko'chkunchixonning o'g'li. Qisqa muddatli hukmronlik davri." },
+  { name: "Ubaydullaxon", title: "Xon", reign: "1533–1539", dur: "6 yil", type: "khanate", info: "Iqtisodiy va madaniy taraqqiyot davri. Madrasa va inshootlar qurilishi avj oldi. Movarounnahrda tartibni mustahkamladi. O'z davrining yirik davlat arbobi hisoblangan." },
+  { name: "Abdullaxon I", title: "Xon", reign: "1539–1540", dur: "1 yil", type: "khanate", info: "Juda qisqa hukmronlik davri." },
+  { name: "Abdulazizxon I", title: "Xon", reign: "1540–1549", dur: "9 yil", type: "khanate", info: "Ubaydullaxonning o'g'li. Xonlikni mustahkamladi. Markaziy Osiyoda savdo rivojlandi." },
+  { name: "Barakxon (Navro'z Ahmad)", title: "Xon", reign: "1549–1556", dur: "7 yil", type: "khanate", info: "Toshkentda ham hukmronlik qildi. Islomiy ilmlar rivojiga hissa qo'shdi. Uning nomiga Toshkentda madrasa qurilgan." },
+  { name: "Pirmuhammad I", title: "Xon", reign: "1556–1560", dur: "4 yil", type: "khanate", info: "Qisqa hukmronlik davri. Ichki nizolar kuchaydi." },
+  { name: "Iskandarxon", title: "Xon", reign: "1560–1583", dur: "23 yil", type: "khanate", info: "Nisbatan tinch va barqaror davr. Savdo munosabatlari rivojlandi. Qo'shni davlatlar bilan diplomatik aloqalar kuchaydi." },
+  { name: "Abdullaxon II", title: "Xon", reign: "1583–1598", dur: "15 yil", type: "khanate", info: "Shayboniylarning eng kuchli hukmdori. Xorazm, Farg'ona va Xurosonni zabt etdi. Me'morlik, ilm-fan va savdoni qo'llab-quvvatladi. Buxorodagi ko'pgina tarixiy inshootlar uning davriga tegishli. Buxoro o'sha davrda O'rta Osiyoning eng qudratli davlatiga aylandi." },
+  { name: "Abdulmo'min", title: "Xon", reign: "1598", dur: "Bir necha oy", type: "khanate", info: "Abdullaxon II ning o'g'li. Taxtga o'tirgach ko'p o'tmay o'ldirildi. Shayboniylar sulolasi shu bilan tugadi." },
+];
+
+const ashtarxonlar = [
+  { name: "Pirmuhammad II (Joniy)", title: "Xon", reign: "1599–1601", dur: "2 yil", type: "khanate", info: "Ashtarxoniylar (Joniylar) sulolasining birinchi vakili. Astraxan xonlaridan kelib chiqadi. Shayboniylardan so'ng hokimiyatni qo'lga oldi." },
+  { name: "Baqi Muhammad", title: "Xon", reign: "1601–1605", dur: "4 yil", type: "khanate", info: "Sulolani mustahkamladi. Buxoro markaziy poytaxt sifatida rivojlandi. Xonlik chegaralari qayta tartibga solindi." },
+  { name: "Vali Muhammad", title: "Xon", reign: "1605–1611", dur: "6 yil", type: "khanate", info: "Qo'shni xonliklar bilan munosabatlar o'rnatdi. Xonlik ichida barqarorlik saqlanib qoldi." },
+  { name: "Imomquli Xon", title: "Xon", reign: "1611–1642", dur: "31 yil", type: "khanate", info: "Uzoq va farovon hukmronlik. Savdo va madaniyat yuksaldi. Buxoro O'rta Osiyo ilm va savdo markazi bo'lib qoldi. Rossiya bilan birinchi diplomatik munosabatlar o'rnatildi." },
+  { name: "Nadr Muhammad", title: "Xon", reign: "1642–1645", dur: "3 yil", type: "khanate", info: "Balxga qochishga majbur bo'ldi. Xonlik davri nisbatan notinch kechdi. O'g'li Abdulazizxon tomonidan taxtdan quvildi." },
+  { name: "Abdulazizxon II", title: "Xon", reign: "1645–1681", dur: "36 yil", type: "khanate", info: "Uzoq va tinch hukmronlik. Me'morlik yodgorliklari bunyod etildi. Buxoroning madaniy hayoti gulladi. Ko'plab madrasa va maqbaralar qurildi." },
+  { name: "Subhonquli Xon", title: "Xon", reign: "1681–1702", dur: "21 yil", type: "khanate", info: "Ilm ahliga homiylik qildi. Tarixiy asarlar yozildi. Davlat boshqaruvi tartibga solindi. Xuroson bilan munosabatlar davom etdi." },
+  { name: "Ubaydullaxon II", title: "Xon", reign: "1702–1711", dur: "9 yil", type: "khanate", info: "Notinch davr. Ichki nizolar kuchaydi. Viloyat hokimlari tobora kuchayib bordi." },
+  { name: "Abulfayzxon", title: "Xon", reign: "1711–1747", dur: "36 yil", type: "khanate", info: "Uzoq hukmronlik, lekin amalda hokimiyat Mang'it amirlarining qo'lida edi. Davlat zaiflashdi. 1740 yilda Nodirshoh Buxoroni bosib oldi va Abulfayzxonni qo'g'irchoq hukmdor sifatida saqladi." },
+  { name: "Abdulmo'min II", title: "Xon", reign: "1747–1751", dur: "4 yil", type: "khanate", info: "Mang'itlar ta'sirida zaif hukmdor. Amalda hokimiyat Mang'it Muhammad Rahimda edi." },
+  { name: "Ubaydullaxon III", title: "Xon", reign: "1751–1753", dur: "2 yil", type: "khanate", info: "Ashtarxoniylarning so'nggi hukmdorlaridan biri. Mang'it amirlarining to'la nazorati ostida edi." },
+  { name: "Abulfayz II (Abulg'ozi)", title: "Xon", reign: "1753–1758", dur: "5 yil", type: "khanate", info: "Ashtarxoniylar sulolasining oxirgi vakili. Mang'it amirlari tomonidan 1758 yilda taxtdan tushirildi. Shundan keyin Mang'itlar nominal xon o'rnatdilar." },
+  { name: "Doniyor (nominal xon)", title: "Xon", reign: "1758–1785", dur: "27 yil", type: "khanate", info: "Mang'itlar amalda hokimiyatni boshqargan bo'lsa-da, Doniyor nominal xon sifatida hukm surdi. 1785 yilda Shohmurod xonlik unvonidan voz kechib, amirlikni e'lon qildi." },
+];
+
+const amirlar = [
+  { name: "Shohmurod (Amir Masum)", title: "Amir", reign: "1785–1800", dur: "15 yil", type: "amirate", info: "Buxoro amirligining asoschisi. 'Xon' unvonidan voz kechib, 'Amir' unvonini qabul qildi. Soliqlar tartibga solindi, adolat tiklandi. Dindor va xalqparvar hukmdor sifatida tarixda qoldi." },
+  { name: "Xaydar Tora", title: "Amir", reign: "1800–1826", dur: "26 yil", type: "amirate", info: "Shohmurodning o'g'li. Uzoq va nisbatan tinch hukmronlik. Davlat markazlashtirildi. Rossiya bilan birinchi rasmiy diplomatik aloqalar o'rnatildi. Adabiyot va san'at rivojlandi." },
+  { name: "Husayn Xon", title: "Amir", reign: "1826", dur: "Bir necha oy", type: "amirate", info: "Xaydar Toraning o'g'li. Taxtga o'tirgach tez orada o'ldirildi. Taxt uchun kurash avj oldi." },
+  { name: "Umar Xon (Amir Umar)", title: "Amir", reign: "1826–1827", dur: "1 yil", type: "amirate", info: "Qisqa muddatli hukmronlik. Ichki nizolar va taxt kurashi davom etdi." },
+  { name: "Nasrulloxon", title: "Amir", reign: "1827–1860", dur: "33 yil", type: "amirate", info: "Mustabid va shafqatsiz hukmdor sifatida tanildi. Qo'qon va Xorazmga qarshi urushlar olib bordi. 1842 yilda ingliz diplomatlari Stoddart va Conollyni qatl ettirdi. Davlatni markazlashtirdi va amirlik hududini kengaytirdi." },
+  { name: "Muzaffar ud-Din", title: "Amir", reign: "1860–1885", dur: "25 yil", type: "amirate", info: "1866–1868 yillarda Rossiya bilan urushda mag'lub bo'ldi. 1868 yilda Rossiya bilan shartnoma tuzib, Buxoro vassalga aylandi. Samarqand va Zarafshon viloyatlarini yo'qotdi. Shu bilan birga amirlik ichki ishlarida ma'lum mustaqilligini saqlab qoldi." },
+  { name: "Abdulahad Xon", title: "Amir", reign: "1885–1910", dur: "25 yil", type: "amirate", info: "Rossiya bilan hamkorlikni chuqurlashtirdi. Buxoroda temiryo'l qurilishiga ruxsat berdi (1888). Yangi Buxoro (Kogon) shahri paydo bo'ldi. Rossiyaga tez-tez tashrif buyurdi. Jadidchilik harakati kuchaya boshladi." },
+  { name: "Muhammad Olimxon", title: "Amir", reign: "1910–1920", dur: "10 yil", type: "amirate", info: "Buxoro amirligining so'nggi hukmdori. Jadidlar islohot talab qildi, ammo Olimxon ularni ta'qib qildi. 1920 yil avgustda Qizil Armiya bostirib kirdi. Olimxon Afg'onistonga qochdi. Buxoro Xalq Sovet Respublikasi e'lon qilindi." },
+];
+
+const events = [
+  { year: "1500", text: "Muhammad Shayboniy Buxoro xonligini asos soldi", color: "var(--gold)" },
+  { year: "1510", text: "Ismoil Safaviy bilan Marvdagi jangda Shayboniy halok bo'ldi", color: "#C05030" },
+  { year: "1583–98", text: "Abdullaxon II — xonlikning eng qudratli davri", color: "var(--gold)" },
+  { year: "1598", text: "Shayboniylar sulolasi tugadi, Ashtarxoniylar hokimiyatni oldi", color: "#A08050" },
+  { year: "1611–42", text: "Imomquli Xon — uzoq tinchlik va farovonlik davri", color: "var(--gold)" },
+  { year: "1740", text: "Nodirshoh Buxoroni bosib oldi", color: "#C05030" },
+  { year: "1785", text: "Shohmurod amirlikni e'lon qildi — xonlikdan amirlikka o'tish", color: "var(--blue-royal)" },
+  { year: "1842", text: "Nasrulloxon ingliz diplomatlarini qatl ettirdi", color: "#C05030" },
+  { year: "1868", text: "Rossiya bilan shartnoma — Buxoro vassalga aylandi", color: "var(--blue-royal)" },
+  { year: "1888", text: "Buxoroga temiryo'l qurildi — Yangi Buxoro (Kogon) paydo bo'ldi", color: "#4A8A4A" },
+  { year: "1920", text: "Qizil Armiya Buxoroni bosib oldi — amirlik tugatildi", color: "#C05030" },
+];
+
+function buildTimeline(containerId, data) {
+  const el = document.getElementById(containerId);
+  data.forEach((r, i) => {
+    const uid = containerId + '_' + i;
+    const div = document.createElement('div');
+    div.className = 'ruler' + (r.type === 'amirate' ? ' amirate' : '');
+    div.id = 'ruler_' + uid;
+    div.innerHTML = `
+      <div class="ruler-dot"></div>
+      <div class="ruler-card" onclick="toggleDetail('${uid}')">
+        <div class="ruler-accent"></div>
+        <div class="ruler-body">
+          <div class="ruler-left">
+            <div class="ruler-name">${r.name}</div>
+            <div class="ruler-title-label">${r.title}</div>
+          </div>
+          <div class="ruler-right">
+            <div class="ruler-reign">${r.reign}</div>
+            <div class="ruler-dur">${r.dur}</div>
+          </div>
+          <div class="ruler-toggle">&#9660;</div>
+        </div>
+      </div>
+      <div class="ruler-detail" id="detail_${uid}">
+        <div class="ruler-detail-inner">${r.info}</div>
+      </div>
+    `;
+    el.appendChild(div);
+  });
+}
+
+function toggleDetail(uid) {
+  const panel = document.getElementById('detail_' + uid);
+  const ruler = document.getElementById('ruler_' + uid);
+  const isOpen = ruler.classList.contains('open');
+  ruler.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    const inner = panel.querySelector('.ruler-detail-inner');
+    panel.style.maxHeight = (inner.scrollHeight + 32) + 'px';
+    const card = ruler.querySelector('.ruler-card');
+    card.style.borderBottomLeftRadius = '0';
+    card.style.borderBottomRightRadius = '0';
+  } else {
+    panel.style.maxHeight = '0';
+    const card = ruler.querySelector('.ruler-card');
+    card.style.borderBottomLeftRadius = '';
+    card.style.borderBottomRightRadius = '';
+  }
+}
+
+function buildEvents() {
+  const el = document.getElementById('events-list');
+  events.forEach((e, i) => {
+    const div = document.createElement('div');
+    div.style.cssText = `display:flex; align-items:center; gap:16px; padding:12px 20px; border-bottom: 0.5px solid rgba(201,146,42,0.1);`;
+    if (i === events.length - 1) div.style.borderBottom = 'none';
+    div.innerHTML = `
+      <span style="font-family:'Playfair Display',serif; font-size:13px; font-weight:700; color:${e.color}; min-width:60px; white-space:nowrap;">${e.year}</span>
+      <div style="width:6px; height:6px; border-radius:50%; background:${e.color}; flex-shrink:0; opacity:0.7;"></div>
+      <span style="font-size:14px; color:#3A2810; line-height:1.5;">${e.text}</span>
+    `;
+    el.appendChild(div);
+  });
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+buildTimeline('tl1', shayboniylar);
+buildTimeline('tl2', ashtarxonlar);
+buildTimeline('tl3', []);
+buildTimeline('tl4', amirlar);
+buildEvents();
+</script>
+</body>
+</html>
