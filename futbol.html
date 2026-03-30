@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ўзбекистон МТЖ — ЖЧ Саралашлари</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1b4fa8;--blue-d:#0f3080;--blue-l:#2f6fd9;--blue-pale:#e8f0fb;--blue-mid:#c5d8f5;
+  --green:#007a3d;--green-l:#009e4f;--green-pale:#e6f4ec;
+  --gold:#b8860b;--gold-l:#d4a017;--gold-pale:#fef9e7;
+  --red:#c0392b;--red-pale:#fdecea;
+  --gray-50:#f9fafc;--gray-100:#f1f4f9;--gray-200:#e4e8f0;--gray-300:#ced4e0;
+  --gray-400:#9aa4bc;--gray-600:#5a657d;--gray-800:#2d3448;
+  --text:#1e2638;--text-muted:#6b7a96;--white:#fff;--border:#dde3ef;
+  --sh-sm:0 1px 4px rgba(27,79,168,.08);--sh:0 4px 18px rgba(27,79,168,.11);
+  --sh-lg:0 8px 36px rgba(27,79,168,.16);--r:14px;--r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--gray-50);color:var(--text);font-family:'Raleway',sans-serif;line-height:1.6;min-height:100vh}
+
+.hdr{background:var(--white);border-bottom:3px solid var(--blue);position:sticky;top:0;z-index:200;box-shadow:var(--sh)}
+.hdr-inner{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:60px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.flag{width:38px;height:24px;border-radius:3px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh-sm)}
+.flag div:nth-child(1){background:#1eb6ff;flex:1}
+.flag div:nth-child(2){background:#fff;height:3px}
+.flag div:nth-child(3){background:#1daa60;flex:1}
+.logo-t{font-size:13px;font-weight:800;color:var(--blue);line-height:1.15}
+.logo-s{font-size:9px;font-weight:600;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
+.nav{display:flex;height:60px;margin-left:auto;overflow-x:auto}
+.nb{background:none;border:none;padding:0 14px;height:100%;cursor:pointer;font-family:'Raleway',sans-serif;font-size:12px;font-weight:600;color:var(--text-muted);border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .18s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.nb:hover{color:var(--blue);background:var(--blue-pale)}
+.nb.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:800}
+.nb.edit{color:var(--green)}.nb.edit.active{border-bottom-color:var(--green);background:var(--green-pale)}
+
+.hero{background:linear-gradient(135deg,#1b4fa8 0%,#0f3585 55%,#071e5a 100%);color:#fff;padding:48px 24px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-100px;top:-100px;width:450px;height:450px;border-radius:50%;background:rgba(255,255,255,.035);pointer-events:none}
+.h-inner{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.h-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.h-left{flex:1;min-width:240px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:4px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;color:rgba(255,255,255,.85)}
+.htitle{font-size:clamp(24px,4vw,42px);font-weight:900;line-height:1.1;letter-spacing:-.5px;margin-bottom:8px}
+.htitle span{color:#7ec8ff}
+.hdesc{font-size:13px;color:rgba(255,255,255,.6);font-weight:500}
+.wcb{background:linear-gradient(135deg,#f5c518,#e6a800);color:#111;border-radius:var(--r);padding:16px 20px;text-align:center;box-shadow:0 8px 28px rgba(245,197,24,.4);flex-shrink:0}
+.wce{font-size:34px;display:block;margin-bottom:4px}
+.wct{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.wcs{font-size:10px;font-weight:600;opacity:.75}
+.sg{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.sc{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:var(--r-sm);padding:14px 12px;transition:transform .2s}
+.sc:hover{transform:translateY(-2px)}
+.sc-num{font-size:32px;font-weight:900;line-height:1;margin-bottom:3px}
+.sc-lbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.c-t .sc-num{color:#fff}.c-w .sc-num{color:#5dde8e}.c-d .sc-num{color:#ffd84d}.c-l .sc-num{color:#ff8080}.c-gf .sc-num{color:#7eb8ff}.c-ga .sc-num{color:#ffaa7a}
+
+.main{max-width:1240px;margin:28px auto;padding:0 24px 60px}
+.tp{display:none}.tp.active{display:block;animation:fi .3s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.blk{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-sm);margin-bottom:20px;overflow:hidden}
+.bh{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bt{font-size:14px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:8px}
+.bi{width:30px;height:30px;border-radius:7px;background:var(--blue-pale);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.bb{padding:18px 22px}
+
+.tw{overflow-x:auto}
+.dt{width:100%;border-collapse:collapse;font-size:13px}
+.dt th{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);padding:9px 13px;text-align:left;background:var(--gray-100);border-bottom:2px solid var(--border);white-space:nowrap}
+.dt td{padding:9px 13px;border-bottom:1px solid var(--border);vertical-align:middle}
+.dt tbody tr:last-child td{border-bottom:none}
+.dt tbody tr:hover td{background:var(--blue-pale);transition:background .12s}
+
+.bdg{display:inline-flex;align-items:center;justify-content:center;padding:2px 10px;border-radius:20px;font-size:10.5px;font-weight:700;letter-spacing:.5px}
+.bw{background:var(--green-pale);color:var(--green)}.bd{background:var(--gold-pale);color:var(--gold)}.bl{background:var(--red-pale);color:var(--red)}
+.tg{background:var(--blue-pale);color:var(--blue);font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:5px}
+.vh{color:var(--blue);font-size:11px;font-weight:700}.va{color:var(--red);font-size:11px;font-weight:700}.vn{color:var(--gray-600);font-size:11px;font-weight:600}
+.sct{font-size:15px;font-weight:800;letter-spacing:.5px}
+.mn{font-size:9.5px;color:var(--gold-l);font-weight:700;display:block;margin-top:1px}
+
+.fb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:12px 22px;background:var(--gray-100);border-bottom:1px solid var(--border)}
+.fl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-right:2px}
+.fn{background:var(--white);border:1px solid var(--border);color:var(--text-muted);padding:4px 13px;border-radius:20px;cursor:pointer;font-family:'Raleway',sans-serif;font-size:11.5px;font-weight:600;transition:all .14s}
+.fn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-pale)}
+.fn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.fn.fw{background:var(--green-pale);color:var(--green);border-color:var(--green-pale)}
+.fn.fd{background:var(--gold-pale);color:var(--gold);border-color:var(--gold-pale)}
+.fn.fl2{background:var(--red-pale);color:var(--red);border-color:var(--red-pale)}
+.fn.fw.active{background:var(--green);color:#fff;border-color:var(--green)}
+.fn.fd.active{background:var(--gold-l);color:#fff;border-color:var(--gold-l)}
+.fn.fl2.active{background:var(--red);color:#fff;border-color:var(--red)}
+.si{background:var(--white);border:1px solid var(--border);color:var(--text);padding:5px 14px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:500;width:170px;outline:none;transition:border-color .14s;margin-left:auto}
+.si:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,168,.08)}
+.si::placeholder{color:var(--gray-400)}
+.cl{font-size:11px;color:var(--text-muted);font-weight:600;padding:9px 22px;background:var(--gray-100);border-top:1px solid var(--border)}
+
+.og{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dw{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;padding:4px 0}
+.dl{display:flex;flex-direction:column;gap:12px}
+.dli{display:flex;align-items:center;gap:9px}
+.dld{width:13px;height:13px;border-radius:50%;flex-shrink:0}
+.dlv{font-size:19px;font-weight:900;line-height:1}
+.dll{font-size:10.5px;font-weight:600;color:var(--text-muted)}
+
+.vrow{margin-bottom:18px}
+.vhd{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.vnm{font-size:13px;font-weight:800;display:flex;align-items:center;gap:5px}
+.vs{display:flex;gap:10px;font-size:11px}
+.vsi{display:flex;gap:3px;align-items:center}
+.vsd{width:8px;height:8px;border-radius:50%}
+.sb{height:9px;border-radius:5px;background:var(--gray-200);overflow:hidden;display:flex}
+.sbw{background:var(--green-l)}.sbd{background:var(--gold-l)}.sbl{background:var(--red)}
+
+.yrc{display:flex;align-items:flex-end;gap:5px;height:150px;padding-bottom:26px;overflow-x:auto;padding-top:6px}
+.yrcol{display:flex;flex-direction:column;align-items:center;min-width:36px;flex:1;height:100%;justify-content:flex-end;position:relative;cursor:default}
+.yrst{width:74%;display:flex;flex-direction:column}
+.yrw{background:var(--green-l);border-radius:3px 3px 0 0}.yrd{background:var(--gold-l)}.yrl{background:var(--red)}
+.yrlb{position:absolute;bottom:-21px;font-size:9.5px;font-weight:700;color:var(--text-muted);white-space:nowrap}
+.yrtt{position:absolute;top:-42px;background:var(--gray-800);color:#fff;font-size:10px;padding:3px 8px;border-radius:5px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .14s;z-index:10;font-weight:700}
+.yrcol:hover .yrtt{opacity:1}
+
+.og2{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:9px}
+.opc{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:13px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:all .14s;cursor:default}
+.opc:hover{border-color:var(--blue);box-shadow:var(--sh-sm);transform:translateY(-1px)}
+.opn{font-size:13px;font-weight:800;margin-bottom:2px}
+.opr{font-size:10.5px;color:var(--text-muted);font-weight:500}
+.opwdl{display:flex;gap:3px;flex-shrink:0}
+.wp{width:28px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+.wpw{background:var(--green-pale);color:var(--green)}.wpd{background:var(--gold-pale);color:var(--gold)}.wpl{background:var(--red-pale);color:var(--red)}
+
+.dp{color:var(--green);font-weight:800}.dn{color:var(--red);font-weight:700}.dz{color:var(--gray-600);font-weight:600}
+.pw{display:flex;align-items:center;gap:7px}
+.pt{height:8px;background:var(--gray-200);border-radius:4px;overflow:hidden;width:66px}
+.pf{height:100%;border-radius:4px}
+
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:12px}
+.fc{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px 18px;display:flex;gap:13px;align-items:flex-start;transition:all .18s;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.fc:hover{box-shadow:var(--sh);transform:translateY(-2px)}
+.fc.blue::before{background:var(--blue)}.fc.green::before{background:var(--green-l)}.fc.gold::before{background:var(--gold-l)}.fc.red::before{background:var(--red)}
+.fi{font-size:26px;flex-shrink:0;width:42px;text-align:center;padding-top:1px}
+.ftl{font-size:12.5px;font-weight:800;color:var(--text);margin-bottom:3px;line-height:1.3}
+.fd2{font-size:11.5px;color:var(--text-muted);font-weight:500;line-height:1.5}
+.rrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-bottom:20px}
+.recc{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center}
+.rcv{font-size:24px;font-weight:900;color:var(--blue);line-height:1;margin-bottom:3px}
+.rcl{font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px}
+
+/* EDITOR */
+.ed-intro{padding:16px 22px;background:var(--green-pale);border-bottom:1px solid #b6dfca;display:flex;gap:12px;align-items:flex-start}
+.ei-icon{font-size:26px;flex-shrink:0}
+.ei-text h3{font-size:14px;font-weight:800;color:var(--green);margin-bottom:3px}
+.ei-text p{font-size:12px;color:var(--gray-600);font-weight:500;line-height:1.5}
+.ed-tb{display:flex;gap:8px;flex-wrap:wrap;padding:12px 22px;background:var(--gray-100);border-bottom:1px solid var(--border);align-items:center}
+.eb{padding:7px 16px;border-radius:var(--r-sm);border:1px solid var(--border);cursor:pointer;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;transition:all .15s;background:var(--white);color:var(--text-muted)}
+.eb:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-pale)}
+.eb.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.eb.primary:hover{background:var(--blue-d)}
+.eb.danger{background:var(--red-pale);color:var(--red);border-color:var(--red-pale)}.eb.danger:hover{background:var(--red);color:#fff}
+.eb.success{background:var(--green-pale);color:var(--green);border-color:var(--green-pale)}.eb.success:hover{background:var(--green);color:#fff}
+.esep{width:1px;height:28px;background:var(--border);margin:0 2px}
+.etw{overflow-x:auto;max-height:560px;overflow-y:auto}
+.etbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.etbl th{position:sticky;top:0;z-index:5;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);padding:9px 12px;text-align:left;background:var(--gray-50);border-bottom:2px solid var(--border);white-space:nowrap}
+.etbl td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:middle}
+.etbl tr:hover td{background:#fafbff}
+.etbl tr.emod td{background:var(--gold-pale)}
+.etbl tr.enew td{background:var(--green-pale)}
+.ei2{width:100%;border:1px solid transparent;border-radius:5px;padding:4px 7px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:600;color:var(--text);background:transparent;transition:all .14s;outline:none}
+.ei2:hover{border-color:var(--blue-mid);background:var(--blue-pale)}
+.ei2:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(27,79,168,.09)}
+.esel{border:1px solid transparent;border-radius:5px;padding:4px 7px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:600;color:var(--text);background:transparent;cursor:pointer;outline:none;transition:all .14s}
+.esel:hover{border-color:var(--blue-mid);background:var(--blue-pale)}
+.esel:focus{border-color:var(--blue);background:#fff}
+.dr{background:none;border:none;cursor:pointer;color:var(--gray-400);font-size:16px;padding:2px 6px;border-radius:4px;transition:all .14s;line-height:1}
+.dr:hover{color:var(--red);background:var(--red-pale)}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--gray-800);color:#fff;padding:12px 22px;border-radius:var(--r-sm);font-size:13px;font-weight:700;box-shadow:var(--sh-lg);z-index:1000;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:none;opacity:1}
+.toast.ok{background:var(--green)}.toast.err{background:var(--red)}
+
+.xbtn{display:flex;align-items:center;gap:5px;padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:var(--white);color:var(--text-muted);font-family:'Raleway',sans-serif;font-size:11.5px;font-weight:700;cursor:pointer;transition:all .14s}
+.xbtn:hover{border-color:var(--green);color:var(--green);background:var(--green-pale)}
+
+::-webkit-scrollbar{height:5px;width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:3px}
+.no-d{padding:36px;text-align:center;color:var(--text-muted);font-style:italic;font-size:13px}
+footer{text-align:center;padding:26px;font-size:10.5px;font-weight:600;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;border-top:1px solid var(--border);background:var(--white)}
+
+@media(max-width:900px){.sg{grid-template-columns:repeat(3,1fr)}.og{grid-template-columns:1fr}}
+@media(max-width:600px){.sg{grid-template-columns:repeat(2,1fr)}.hero{padding:28px 16px}.main{padding:0 14px 40px}.bb{padding:14px 16px}.bh{padding:12px 16px}.fb{padding:10px 14px}.hdr-inner{padding:0 14px}.nb{padding:0 10px;font-size:11px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">
+      <div class="flag"><div></div><div></div><div></div></div>
+      <div><div class="logo-t">Ўзбекистон МТЖ</div><div class="logo-s">ЖЧ Саралашлари</div></div>
+    </div>
+    <nav class="nav">
+      <button class="nb active" onclick="showTab('ov',this)">📊 Умумий</button>
+      <button class="nb" onclick="showTab('mt',this)">📋 Ўйинлар</button>
+      <button class="nb" onclick="showTab('op',this)">⚔️ Рақиблар</button>
+      <button class="nb" onclick="showTab('yr',this)">📅 Йиллар</button>
+      <button class="nb" onclick="showTab('ft',this)">💡 Фактлар</button>
+      <button class="nb edit" onclick="showTab('ed',this)">✏️ Таҳрир</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="h-inner">
+    <div class="h-top">
+      <div class="h-left">
+        <div class="chip">⚽ 1997 — 2025</div>
+        <h1 class="htitle">Жаҳон Чемпионати<br><span>Саралашлари</span></h1>
+        <p class="hdesc">117 та расмий ўйин · Тўлиқ статистика ва таҳлил</p>
+      </div>
+      <div class="wcb">
+        <span class="wce">🏆</span>
+        <div class="wct">ЖЧ 2026</div>
+        <div class="wcs">Биринчи марта!<br>АҚШ · Канада · Мексика</div>
+      </div>
+    </div>
+    <div class="sg">
+      <div class="sc c-t"><div class="sc-num" id="h-n">117</div><div class="sc-lbl">Жами ўйин</div></div>
+      <div class="sc c-w"><div class="sc-num" id="h-w">65</div><div class="sc-lbl">Ғалаба</div></div>
+      <div class="sc c-d"><div class="sc-num" id="h-d">22</div><div class="sc-lbl">Дуранг</div></div>
+      <div class="sc c-l"><div class="sc-num" id="h-l">30</div><div class="sc-lbl">Мағлубият</div></div>
+      <div class="sc c-gf"><div class="sc-num" id="h-gf">218</div><div class="sc-lbl">Урилган</div></div>
+      <div class="sc c-ga"><div class="sc-num" id="h-ga">113</div><div class="sc-lbl">Ўтказилган</div></div>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+
+<!-- OVERVIEW -->
+<div id="tab-ov" class="tp active">
+  <div class="og">
+    <div class="blk">
+      <div class="bh"><div class="bt"><span class="bi">🎯</span>Натижалар тақсимоти</div></div>
+      <div class="bb">
+        <div class="dw">
+          <svg width="144" height="144" viewBox="0 0 144 144">
+            <circle cx="72" cy="72" r="52" fill="none" stroke="#eef1f6" stroke-width="22"/>
+            <circle id="dw" cx="72" cy="72" r="52" fill="none" stroke="#009e4f" stroke-width="22" transform="rotate(-90 72 72)"/>
+            <circle id="dd" cx="72" cy="72" r="52" fill="none" stroke="#d4a017" stroke-width="22" transform="rotate(-90 72 72)"/>
+            <circle id="dl" cx="72" cy="72" r="52" fill="none" stroke="#c0392b" stroke-width="22" transform="rotate(-90 72 72)"/>
+            <text x="72" y="67" text-anchor="middle" fill="#1e2638" font-family="Raleway" font-size="18" font-weight="900" id="dpct">55.6%</text>
+            <text x="72" y="82" text-anchor="middle" fill="#6b7a96" font-family="Raleway" font-size="9" font-weight="700">ҒАЛАБА</text>
+          </svg>
+          <div class="dl">
+            <div class="dli"><div class="dld" style="background:var(--green-l)"></div><div><div class="dlv" style="color:var(--green)" id="lw">65</div><div class="dll">Ғалаба (<span id="lwp">55.6</span>%)</div></div></div>
+            <div class="dli"><div class="dld" style="background:var(--gold-l)"></div><div><div class="dlv" style="color:var(--gold)" id="ld">22</div><div class="dll">Дуранг (<span id="ldp">18.8</span>%)</div></div></div>
+            <div class="dli"><div class="dld" style="background:var(--red)"></div><div><div class="dlv" style="color:var(--red)" id="ll">30</div><div class="dll">Мағлубият (<span id="llp">25.6</span>%)</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blk">
+      <div class="bh"><div class="bt"><span class="bi">🏟️</span>Уй · Сафар · Бетараф</div></div>
+      <div class="bb" id="vsec"></div>
+    </div>
+  </div>
+  <div class="blk">
+    <div class="bh">
+      <div class="bt"><span class="bi">📈</span>Йиллар бўйича ўйинлар</div>
+      <div style="display:flex;gap:10px;font-size:10px;font-weight:700">
+        <span style="color:var(--green);display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:var(--green-l);border-radius:2px;display:inline-block"></span>Ғ</span>
+        <span style="color:var(--gold);display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:var(--gold-l);border-radius:2px;display:inline-block"></span>Д</span>
+        <span style="color:var(--red);display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:var(--red);border-radius:2px;display:inline-block"></span>М</span>
+      </div>
+    </div>
+    <div class="bb"><div class="yrc" id="yrc"></div></div>
+  </div>
+  <div class="blk">
+    <div class="bh"><div class="bt"><span class="bi">📉</span>Гол тренди (урилган vs ўтказилган)</div></div>
+    <div class="bb" style="overflow-x:auto"><canvas id="tc" height="160"></canvas></div>
+  </div>
+  <div class="blk">
+    <div class="bh"><div class="bt"><span class="bi">⚡</span>Энг кўп голли ўйинлар (топ-10)</div></div>
+    <div class="tw"><table class="dt"><thead><tr><th>#</th><th>Йил</th><th>Сана</th><th>Жой</th><th>Рақиб</th><th>Ҳисоб</th><th>Жами гол</th></tr></thead><tbody id="tgb"></tbody></table></div>
+  </div>
+</div>
+
+<!-- MATCHES -->
+<div id="tab-mt" class="tp">
+  <div class="blk">
+    <div class="bh">
+      <div class="bt"><span class="bi">📋</span>Барча ўйинлар</div>
+      <button class="xbtn" onclick="exportCSV()">📤 CSV юклаш</button>
+    </div>
+    <div class="fb">
+      <span class="fl">Натижа:</span>
+      <button class="fn active" onclick="fR('all',this)">Барчаси</button>
+      <button class="fn fw" onclick="fR('W',this)">✓ Ғалаба</button>
+      <button class="fn fd" onclick="fR('D',this)">= Дуранг</button>
+      <button class="fn fl2" onclick="fR('L',this)">✗ Мағлубият</button>
+      <span class="fl" style="margin-left:6px">Жой:</span>
+      <button class="fn active" onclick="fV('all',this)">Барчаси</button>
+      <button class="fn" onclick="fV('Ўзбекистонда',this)">🏠 Уй</button>
+      <button class="fn" onclick="fV('Сафарда',this)">✈️ Сафар</button>
+      <input class="si" type="text" placeholder="🔍 Рақиб изланг..." oninput="fQ(this.value)">
+    </div>
+    <div class="tw"><table class="dt"><thead><tr><th>#</th><th>Йил</th><th>Сана</th><th>Жой</th><th>Рақиб</th><th>Ҳисоб</th><th>Натижа</th></tr></thead><tbody id="mb"></tbody></table></div>
+    <div class="cl" id="mc"></div>
+  </div>
+</div>
+
+<!-- OPPONENTS -->
+<div id="tab-op" class="tp">
+  <div class="blk">
+    <div class="bh">
+      <div class="bt"><span class="bi">⚔️</span>Рақиблар бўйича</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <span class="fl">Сараласh:</span>
+        <button class="fn active" onclick="sOp('n',this)">Ўйин</button>
+        <button class="fn" onclick="sOp('w',this)">Ғалаба</button>
+        <button class="fn" onclick="sOp('gf',this)">Гол</button>
+      </div>
+    </div>
+    <div class="bb"><div class="og2" id="og"></div></div>
+  </div>
+</div>
+
+<!-- YEARS -->
+<div id="tab-yr" class="tp">
+  <div class="blk">
+    <div class="bh"><div class="bt"><span class="bi">📅</span>Йиллар бўйича батафсил</div></div>
+    <div class="tw"><table class="dt"><thead><tr><th>Йил</th><th>Ўйин</th><th>Ғ</th><th>Д</th><th>М</th><th>Урилган</th><th>Ўтказилган</th><th>Фарқ</th><th>Ғалаба %</th></tr></thead><tbody id="yrb"></tbody></table></div>
+  </div>
+</div>
+
+<!-- FACTS -->
+<div id="tab-ft" class="tp">
+  <div class="rrow" id="rrow"></div>
+  <div class="blk" style="margin-bottom:20px">
+    <div class="bh"><div class="bt"><span class="bi">🌍</span>Энг муҳим кун — 10 июнь 2025</div></div>
+    <div class="bb" style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+      <div style="font-size:44px">🏆</div>
+      <div>
+        <div style="font-size:14px;font-weight:800;color:var(--blue);margin-bottom:6px">Марказий Осиёдан биринчи ЖЧ иштирокчиси!</div>
+        <div style="font-size:12.5px;color:var(--text-muted);font-weight:500;line-height:1.7;max-width:660px">7 та уринишдан сўнг Ўзбекистон <strong style="color:var(--text)">Қатарни 3:0</strong> ҳисобида мағлуб этиб, <strong style="color:var(--blue)">ЖЧ 2026</strong>га (АҚШ·Канада·Мексика) йўлланма олди. Президент Мирзиёев барча ўйинчи, мураббий ва стаб аъзоларига давлат мукофотлари ва автомобиллар инъом қилди.</div>
+      </div>
+    </div>
+  </div>
+  <div class="blk">
+    <div class="bh"><div class="bt"><span class="bi">💡</span>Қизиқарли фактлар</div></div>
+    <div class="bb"><div class="fg" id="fgrid"></div></div>
+  </div>
+</div>
+
+<!-- EDITOR -->
+<div id="tab-ed" class="tp">
+  <div class="blk">
+    <div class="bh"><div class="bt"><span class="bi">✏️</span>Маълумотларни таҳрир қилиш</div></div>
+    <div class="ed-intro">
+      <div class="ei-icon">💡</div>
+      <div class="ei-text">
+        <h3>Қандай ишлатилади?</h3>
+        <p>Ячейкани босинг ва ўзгартиринг → <span style="background:var(--gold-pale);padding:1px 5px;border-radius:3px;font-weight:700">Сарғиш</span> = ўзгартирилган · <span style="background:var(--green-pale);padding:1px 5px;border-radius:3px;font-weight:700">Яшил</span> = янги. Тугатгандан сўнг <strong>"💾 Сақлаш"</strong>ни босинг — барча бўлимлар автоматик янгиланади.</p>
+      </div>
+    </div>
+    <div class="ed-tb">
+      <button class="eb primary" onclick="saveEd()">💾 Сақлаш ва янгилаш</button>
+      <div class="esep"></div>
+      <button class="eb success" onclick="addRow()">➕ Янги ўйин</button>
+      <div class="esep"></div>
+      <button class="eb" onclick="exportCSV()">📤 CSV юклаш</button>
+      <div class="esep"></div>
+      <button class="eb danger" onclick="resetEd()">↺ Бекор қилиш</button>
+      <span id="est" style="margin-left:auto;font-size:11px;font-weight:700;color:var(--text-muted)"></span>
+    </div>
+    <div class="etw">
+      <table class="etbl" id="etbl">
+        <thead><tr><th>#</th><th>Йил</th><th>Сана</th><th>Қаерда</th><th>Рақиб</th><th>Ўзбекистон голи</th><th>Рақиб голи</th><th>Натижа</th><th>Изоҳ</th><th></th></tr></thead>
+        <tbody id="eb2"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Ўзбекистон МТЖ · ЖЧ Саралашлари · 1997–2025 · 117 та ўйин</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+let M=[
+  {yr:1997,dt:"9 май",vn:"Сафарда",op:"Яман",gf:1,ga:0},
+  {yr:1997,dt:"25 май",vn:"Ўзбекистонда",op:"Камбоджа",gf:6,ga:0},
+  {yr:1997,dt:"1 июнь",vn:"Сафарда",op:"Индонезия",gf:1,ga:1},
+  {yr:1997,dt:"20 июнь",vn:"Ўзбекистонда",op:"Индонезия",gf:3,ga:0},
+  {yr:1997,dt:"29 июнь",vn:"Сафарда",op:"Камбоджа",gf:1,ga:4},
+  {yr:1997,dt:"24 август",vn:"Ўзбекистонда",op:"Яман",gf:5,ga:1},
+  {yr:1997,dt:"7 сентябрь",vn:"Сафарда",op:"Япония",gf:3,ga:6},
+  {yr:1997,dt:"12 сентябрь",vn:"Сафарда",op:"Жанубий Корея",gf:1,ga:2},
+  {yr:1997,dt:"20 сентябрь",vn:"Сафарда",op:"Қозоғистон",gf:1,ga:1},
+  {yr:1997,dt:"27 сентябрь",vn:"Ўзбекистонда",op:"БАА",gf:2,ga:3},
+  {yr:1997,dt:"11 октябрь",vn:"Ўзбекистонда",op:"Япония",gf:1,ga:1},
+  {yr:1997,dt:"18 октябрь",vn:"Ўзбекистонда",op:"Жанубий Корея",gf:1,ga:5},
+  {yr:1997,dt:"25 октябрь",vn:"Ўзбекистонда",op:"Қозоғистон",gf:4,ga:0},
+  {yr:1997,dt:"2 ноябрь",vn:"Сафарда",op:"БАА",gf:0,ga:0},
+  {yr:2001,dt:"23 апрель",vn:"Ўзбекистонда",op:"Хитой Тайпейи",gf:7,ga:0},
+  {yr:2001,dt:"25 апрель",vn:"Ўзбекистонда",op:"Туркманистон",gf:1,ga:0},
+  {yr:2001,dt:"27 апрель",vn:"Ўзбекистонда",op:"Иордания",gf:2,ga:2},
+  {yr:2001,dt:"3 май",vn:"Бетараф",op:"Туркманистон",gf:5,ga:2},
+  {yr:2001,dt:"5 май",vn:"Бетараф",op:"Хитой Тайпейи",gf:4,ga:0},
+  {yr:2001,dt:"7 май",vn:"Сафарда",op:"Иордания",gf:1,ga:1},
+  {yr:2001,dt:"17 август",vn:"Сафарда",op:"БАА",gf:1,ga:4},
+  {yr:2001,dt:"26 август",vn:"Ўзбекистонда",op:"Қатар",gf:2,ga:1},
+  {yr:2001,dt:"8 сентябрь",vn:"Ўзбекистонда",op:"Уммон",gf:5,ga:0},
+  {yr:2001,dt:"15 сентябрь",vn:"Сафарда",op:"Хитой",gf:0,ga:2},
+  {yr:2001,dt:"22 сентябрь",vn:"Ўзбекистонда",op:"БАА",gf:0,ga:1},
+  {yr:2001,dt:"28 сентябрь",vn:"Сафарда",op:"Қатар",gf:2,ga:2},
+  {yr:2001,dt:"13 октябрь",vn:"Сафарда",op:"Уммон",gf:2,ga:4},
+  {yr:2001,dt:"19 октябрь",vn:"Ўзбекистонда",op:"Хитой",gf:1,ga:0},
+  {yr:2004,dt:"18 февраль",vn:"Ўзбекистонда",op:"Ироқ",gf:1,ga:1},
+  {yr:2004,dt:"31 март",vn:"Сафарда",op:"Хитой Тайпейи",gf:1,ga:0},
+  {yr:2004,dt:"9 июнь",vn:"Ўзбекистонда",op:"Фаластин",gf:3,ga:0},
+  {yr:2004,dt:"8 сентябрь",vn:"Бетараф",op:"Фаластин",gf:3,ga:0},
+  {yr:2004,dt:"13 октябрь",vn:"Бетараф",op:"Ироқ",gf:2,ga:1},
+  {yr:2004,dt:"17 ноябрь",vn:"Ўзбекистонда",op:"Хитой Тайпейи",gf:6,ga:1},
+  {yr:2005,dt:"9 февраль",vn:"Ўзбекистонда",op:"Саудия Арабистони",gf:1,ga:1},
+  {yr:2005,dt:"25 март",vn:"Сафарда",op:"Кувайт",gf:1,ga:2},
+  {yr:2005,dt:"30 март",vn:"Сафарда",op:"Жанубий Корея",gf:1,ga:2},
+  {yr:2005,dt:"3 июнь",vn:"Ўзбекистонда",op:"Жанубий Корея",gf:1,ga:1},
+  {yr:2005,dt:"8 июнь",vn:"Сафарда",op:"Саудия Арабистони",gf:3,ga:0},
+  {yr:2005,dt:"17 август",vn:"Ўзбекистонда",op:"Кувайт",gf:3,ga:2},
+  {yr:2005,dt:"3 сентябрь",vn:"Ўзбекистонда",op:"Баҳрайн",gf:1,ga:0,note:"Бекор қилинган"},
+  {yr:2005,dt:"8 октябрь",vn:"Ўзбекистонда",op:"Баҳрайн",gf:1,ga:1},
+  {yr:2005,dt:"12 октябрь",vn:"Сафарда",op:"Баҳрайн",gf:0,ga:0},
+  {yr:2007,dt:"13 октябрь",vn:"Ўзбекистонда",op:"Хитой Тайпейи",gf:9,ga:0},
+  {yr:2007,dt:"28 октябрь",vn:"Сафарда",op:"Хитой Тайпейи",gf:2,ga:0},
+  {yr:2008,dt:"6 февраль",vn:"Сафарда",op:"Ливан",gf:1,ga:0},
+  {yr:2008,dt:"26 март",vn:"Ўзбекистонда",op:"Саудия Арабистони",gf:3,ga:0},
+  {yr:2008,dt:"2 июнь",vn:"Сафарда",op:"Сингапур",gf:7,ga:3},
+  {yr:2008,dt:"7 июнь",vn:"Ўзбекистонда",op:"Сингапур",gf:1,ga:0,note:"Техник ғалаба 3:0"},
+  {yr:2008,dt:"14 июнь",vn:"Ўзбекистонда",op:"Ливан",gf:3,ga:0},
+  {yr:2008,dt:"22 июнь",vn:"Сафарда",op:"Саудия Арабистони",gf:0,ga:4},
+  {yr:2008,dt:"6 сентябрь",vn:"Сафарда",op:"Қатар",gf:0,ga:3},
+  {yr:2008,dt:"10 сентябрь",vn:"Ўзбекистонда",op:"Австралия",gf:0,ga:1},
+  {yr:2008,dt:"15 октябрь",vn:"Сафарда",op:"Япония",gf:1,ga:1},
+  {yr:2009,dt:"11 февраль",vn:"Ўзбекистонда",op:"Баҳрайн",gf:0,ga:1},
+  {yr:2009,dt:"28 март",vn:"Ўзбекистонда",op:"Қатар",gf:4,ga:0},
+  {yr:2009,dt:"1 апрель",vn:"Сафарда",op:"Австралия",gf:0,ga:2},
+  {yr:2009,dt:"6 июнь",vn:"Ўзбекистонда",op:"Япония",gf:0,ga:1},
+  {yr:2009,dt:"17 июнь",vn:"Сафарда",op:"Баҳрайн",gf:0,ga:1},
+  {yr:2011,dt:"23 июль",vn:"Ўзбекистонда",op:"Қирғизистон",gf:4,ga:0},
+  {yr:2011,dt:"28 июль",vn:"Сафарда",op:"Қирғизистон",gf:3,ga:0},
+  {yr:2011,dt:"2 сентябрь",vn:"Сафарда",op:"Тожикистон",gf:1,ga:0},
+  {yr:2011,dt:"6 сентябрь",vn:"Ўзбекистонда",op:"Япония",gf:1,ga:1},
+  {yr:2011,dt:"11 октябрь",vn:"Сафарда",op:"Шимолий Корея",gf:0,ga:1},
+  {yr:2011,dt:"11 ноябрь",vn:"Ўзбекистонда",op:"Шимолий Корея",gf:1,ga:0},
+  {yr:2011,dt:"15 ноябрь",vn:"Ўзбекистонда",op:"Тожикистон",gf:3,ga:0},
+  {yr:2012,dt:"29 февраль",vn:"Сафарда",op:"Япония",gf:1,ga:0},
+  {yr:2012,dt:"3 июнь",vn:"Ўзбекистонда",op:"Эрон",gf:0,ga:1},
+  {yr:2012,dt:"8 июнь",vn:"Сафарда",op:"Ливан",gf:1,ga:1},
+  {yr:2012,dt:"11 сентябрь",vn:"Ўзбекистонда",op:"Жанубий Корея",gf:2,ga:2},
+  {yr:2012,dt:"16 октябрь",vn:"Сафарда",op:"Қатар",gf:1,ga:0},
+  {yr:2012,dt:"14 ноябрь",vn:"Сафарда",op:"Эрон",gf:1,ga:0},
+  {yr:2013,dt:"26 март",vn:"Ўзбекистонда",op:"Ливан",gf:1,ga:0},
+  {yr:2013,dt:"11 июнь",vn:"Сафарда",op:"Жанубий Корея",gf:0,ga:1},
+  {yr:2013,dt:"18 июнь",vn:"Ўзбекистонда",op:"Қатар",gf:5,ga:1},
+  {yr:2015,dt:"16 июнь",vn:"Сафарда",op:"Шимолий Корея",gf:2,ga:4},
+  {yr:2015,dt:"3 сентябрь",vn:"Ўзбекистонда",op:"Яман",gf:1,ga:0},
+  {yr:2015,dt:"8 сентябрь",vn:"Сафарда",op:"Филиппин",gf:5,ga:1},
+  {yr:2015,dt:"8 октябрь",vn:"Сафарда",op:"Баҳрайн",gf:4,ga:0},
+  {yr:2015,dt:"12 ноябрь",vn:"Ўзбекистонда",op:"Шимолий Корея",gf:3,ga:1},
+  {yr:2015,dt:"17 ноябрь",vn:"Бетараф",op:"Яман",gf:3,ga:1},
+  {yr:2016,dt:"24 март",vn:"Ўзбекистонда",op:"Филиппин",gf:1,ga:0},
+  {yr:2016,dt:"29 март",vn:"Ўзбекистонда",op:"Баҳрайн",gf:1,ga:0},
+  {yr:2016,dt:"1 сентябрь",vn:"Ўзбекистонда",op:"Сурия",gf:1,ga:0},
+  {yr:2016,dt:"6 сентябрь",vn:"Сафарда",op:"Қатар",gf:1,ga:0},
+  {yr:2016,dt:"6 октябрь",vn:"Ўзбекистонда",op:"Эрон",gf:0,ga:1},
+  {yr:2016,dt:"11 октябрь",vn:"Ўзбекистонда",op:"Хитой",gf:2,ga:0},
+  {yr:2016,dt:"15 ноябрь",vn:"Сафарда",op:"Жанубий Корея",gf:1,ga:2},
+  {yr:2017,dt:"23 март",vn:"Бетараф",op:"Сурия",gf:1,ga:0},
+  {yr:2017,dt:"28 март",vn:"Ўзбекистонда",op:"Қатар",gf:1,ga:0},
+  {yr:2017,dt:"12 июнь",vn:"Сафарда",op:"Эрон",gf:0,ga:2},
+  {yr:2017,dt:"31 август",vn:"Сафарда",op:"Хитой",gf:0,ga:1},
+  {yr:2017,dt:"5 сентябрь",vn:"Ўзбекистонда",op:"Жанубий Корея",gf:0,ga:0},
+  {yr:2019,dt:"5 сентябрь",vn:"Сафарда",op:"Фаластин",gf:0,ga:2},
+  {yr:2019,dt:"10 октябрь",vn:"Ўзбекистонда",op:"Яман",gf:5,ga:0},
+  {yr:2019,dt:"15 октябрь",vn:"Сафарда",op:"Сингапур",gf:3,ga:1},
+  {yr:2019,dt:"14 ноябрь",vn:"Ўзбекистонда",op:"Саудия Арабистони",gf:2,ga:3},
+  {yr:2019,dt:"19 ноябрь",vn:"Ўзбекистонда",op:"Фаластин",gf:2,ga:0},
+  {yr:2021,dt:"7 июнь",vn:"Бетараф",op:"Сингапур",gf:5,ga:0},
+  {yr:2021,dt:"11 июнь",vn:"Бетараф",op:"Яман",gf:1,ga:0},
+  {yr:2021,dt:"15 июнь",vn:"Ўзбекистонда",op:"Саудия Арабистони",gf:0,ga:3},
+  {yr:2023,dt:"16 ноябрь",vn:"Сафарда",op:"Туркманистон",gf:3,ga:1},
+  {yr:2023,dt:"21 ноябрь",vn:"Ўзбекистонда",op:"Эрон",gf:2,ga:2},
+  {yr:2024,dt:"21 март",vn:"Сафарда",op:"Гонконг",gf:2,ga:0},
+  {yr:2024,dt:"26 март",vn:"Ўзбекистонда",op:"Гонконг",gf:3,ga:0},
+  {yr:2024,dt:"6 июнь",vn:"Ўзбекистонда",op:"Туркманистон",gf:3,ga:1},
+  {yr:2024,dt:"11 июнь",vn:"Сафарда",op:"Эрон",gf:0,ga:0},
+  {yr:2024,dt:"5 сентябрь",vn:"Ўзбекистонда",op:"Шимолий Корея",gf:1,ga:0},
+  {yr:2024,dt:"10 сентябрь",vn:"Сафарда",op:"Қирғизистон",gf:3,ga:2},
+  {yr:2024,dt:"10 октябрь",vn:"Ўзбекистонда",op:"Эрон",gf:0,ga:0},
+  {yr:2024,dt:"15 октябрь",vn:"Ўзбекистонда",op:"БАА",gf:1,ga:0},
+  {yr:2024,dt:"14 ноябрь",vn:"Сафарда",op:"Қатар",gf:2,ga:3},
+  {yr:2024,dt:"19 ноябрь",vn:"Бетараф",op:"Шимолий Корея",gf:1,ga:0},
+  {yr:2025,dt:"20 март",vn:"Ўзбекистонда",op:"Қирғизистон",gf:1,ga:0},
+  {yr:2025,dt:"25 март",vn:"Сафарда",op:"Эрон",gf:2,ga:2},
+  {yr:2025,dt:"5 июнь",vn:"Сафарда",op:"БАА",gf:0,ga:0},
+  {yr:2025,dt:"10 июнь",vn:"Ўзбекистонда",op:"Қатар",gf:3,ga:0},
+];
+
+const R=m=>m.gf>m.ga?'W':m.gf===m.ga?'D':'L';
+const VL=v=>v==='Ўзбекистонда'?'🏠 Уй':v==='Сафарда'?'✈️ Сафар':'⚖️ Бетараф';
+const VC=v=>v==='Ўзбекистонда'?'vh':v==='Сафарда'?'va':'vn';
+const S=(a,f)=>a.reduce((t,x)=>t+(f?f(x):x),0);
+let rF='all',vF='all',qF='';
+let origM=null;
+
+function showTab(n,btn){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+n).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(n==='ed')buildEditor();
+}
+
+function updHero(){
+  const w=M.filter(m=>R(m)==='W').length,d=M.filter(m=>R(m)==='D').length,l=M.filter(m=>R(m)==='L').length;
+  document.getElementById('h-n').textContent=M.length;
+  document.getElementById('h-w').textContent=w;
+  document.getElementById('h-d').textContent=d;
+  document.getElementById('h-l').textContent=l;
+  document.getElementById('h-gf').textContent=S(M,m=>m.gf);
+  document.getElementById('h-ga').textContent=S(M,m=>m.ga);
+  updDonut(w,d,l);
+}
+
+function updDonut(w,d,l){
+  const t=w+d+l,C=2*Math.PI*52;
+  const wA=C*w/t,dA=C*d/t,lA=C*l/t;
+  document.getElementById('dw').setAttribute('stroke-dasharray',`${wA} ${C-wA}`);
+  document.getElementById('dw').setAttribute('stroke-dashoffset','0');
+  document.getElementById('dd').setAttribute('stroke-dasharray',`${dA} ${C-dA}`);
+  document.getElementById('dd').setAttribute('stroke-dashoffset',`${-wA}`);
+  document.getElementById('dl').setAttribute('stroke-dasharray',`${lA} ${C-lA}`);
+  document.getElementById('dl').setAttribute('stroke-dashoffset',`${-(wA+dA)}`);
+  document.getElementById('dpct').textContent=(w/t*100).toFixed(1)+'%';
+  document.getElementById('lw').textContent=w;document.getElementById('ld').textContent=d;document.getElementById('ll').textContent=l;
+  document.getElementById('lwp').textContent=(w/t*100).toFixed(1);
+  document.getElementById('ldp').textContent=(d/t*100).toFixed(1);
+  document.getElementById('llp').textContent=(l/t*100).toFixed(1);
+}
+
+function buildVenue(){
+  const vens=['Ўзбекистонда','Сафарда','Бетараф'],ems={'Ўзбекистонда':'🏠','Сафарда':'✈️','Бетараф':'⚖️'};
+  let h='';
+  for(const v of vens){
+    const ms=M.filter(m=>m.vn===v);
+    const w=ms.filter(m=>R(m)==='W').length,d=ms.filter(m=>R(m)==='D').length,l=ms.filter(m=>R(m)==='L').length;
+    const gf=S(ms,m=>m.gf),ga=S(ms,m=>m.ga);
+    const pct=ms.length?Math.round(w/ms.length*100):0;
+    const wp=ms.length?Math.round(w/ms.length*100):0,dp=ms.length?Math.round(d/ms.length*100):0;
+    h+=`<div class="vrow"><div class="vhd"><span class="vnm">${ems[v]} ${v} <span style="color:var(--text-muted);font-size:11px;font-weight:500">(${ms.length})</span></span><div class="vs"><span class="vsi"><span class="vsd" style="background:var(--green-l)"></span><strong style="color:var(--green)">${w}</strong></span><span class="vsi"><span class="vsd" style="background:var(--gold-l)"></span><strong style="color:var(--gold)">${d}</strong></span><span class="vsi"><span class="vsd" style="background:var(--red)"></span><strong style="color:var(--red)">${l}</strong></span><span style="color:var(--text-muted)">${gf}:${ga}</span><span style="color:${pct>=50?'var(--green)':'var(--red)'};font-weight:800">${pct}%</span></div></div><div class="sb"><div class="sbw" style="width:${wp}%"></div><div class="sbd" style="width:${dp}%"></div><div class="sbl" style="width:${100-wp-dp}%"></div></div></div>`;
+  }
+  document.getElementById('vsec').innerHTML=h;
+}
+
+function buildYrChart(){
+  const years=[...new Set(M.map(m=>m.yr))].sort();
+  const maxN=Math.max(...years.map(y=>M.filter(m=>m.yr===y).length));
+  const maxH=112;
+  let h='';
+  for(const yr of years){
+    const ms=M.filter(m=>m.yr===yr);
+    const w=ms.filter(m=>R(m)==='W').length,d=ms.filter(m=>R(m)==='D').length,l=ms.filter(m=>R(m)==='L').length;
+    const wh=Math.round(maxH*w/maxN),dh=Math.round(maxH*d/maxN),lh=Math.round(maxH*l/maxN);
+    const gf=S(ms,m=>m.gf),ga=S(ms,m=>m.ga);
+    h+=`<div class="yrcol"><div class="yrtt">${yr}: ${ms.length}Ў·${w}Ғ ${d}Д ${l}М·${gf}:${ga}</div><div class="yrst"><div class="yrl" style="height:${lh}px"></div><div class="yrd" style="height:${dh}px"></div><div class="yrw" style="height:${wh}px"></div></div><span class="yrlb">${yr}</span></div>`;
+  }
+  document.getElementById('yrc').innerHTML=h;
+}
+
+function buildTrend(){
+  const years=[...new Set(M.map(m=>m.yr))].sort();
+  const canvas=document.getElementById('tc');
+  const cont=canvas.parentElement;
+  const W=Math.max(cont.clientWidth||500,years.length*50);
+  canvas.width=W;canvas.height=160;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,160);
+  const pad={l:38,r:16,t:14,b:30};
+  const cW=W-pad.l-pad.r,cH=160-pad.t-pad.b;
+  const gfA=years.map(y=>S(M.filter(m=>m.yr===y),m=>m.gf));
+  const gaA=years.map(y=>S(M.filter(m=>m.yr===y),m=>m.ga));
+  const maxV=Math.max(...gfA,...gaA)||1;
+  ctx.strokeStyle='#eef1f6';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=pad.t+cH*(1-i/4);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cW,y);ctx.stroke();ctx.fillStyle='#9aa4bc';ctx.font='700 9px Raleway';ctx.textAlign='right';ctx.fillText(Math.round(maxV*i/4),pad.l-5,y+3);}
+  const drawLine=(arr,color)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.lineJoin='round';arr.forEach((v,i)=>{const x=pad.l+cW*(i/(years.length-1||1)),y=pad.t+cH*(1-v/maxV);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});ctx.stroke();arr.forEach((v,i)=>{const x=pad.l+cW*(i/(years.length-1||1)),y=pad.t+cH*(1-v/maxV);ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()});};
+  drawLine(gfA,'#009e4f');drawLine(gaA,'#c0392b');
+  ctx.fillStyle='#9aa4bc';ctx.font='700 9px Raleway';ctx.textAlign='center';
+  years.forEach((yr,i)=>{const x=pad.l+cW*(i/(years.length-1||1));ctx.fillText(yr,x,160-8);});
+  ctx.font='700 10px Raleway';
+  ctx.fillStyle='#009e4f';ctx.fillRect(pad.l,2,12,8);ctx.fillText('Урилган',pad.l+22,10);
+  ctx.fillStyle='#c0392b';ctx.fillRect(pad.l+80,2,12,8);ctx.fillText('Ўтказилган',pad.l+102,10);
+}
+
+function buildTopGoals(){
+  const sorted=[...M].sort((a,b)=>(b.gf+b.ga)-(a.gf+a.ga)).slice(0,10);
+  let h='';
+  sorted.forEach((m,i)=>{
+    h+=`<tr><td style="color:var(--text-muted);font-weight:700">${i+1}</td><td><span class="tg">${m.yr}</span></td><td style="white-space:nowrap">${m.dt}</td><td><span class="${VC(m.vn)}">${VL(m.vn)}</span></td><td><strong>${m.op}</strong></td><td><span class="sct">${m.gf}:${m.ga}</span></td><td><strong style="font-size:15px;font-weight:900;color:${i<3?'var(--gold-l)':'var(--blue)'}">${m.gf+m.ga} ⚽</strong></td></tr>`;
+  });
+  document.getElementById('tgb').innerHTML=h;
+}
+
+function buildMatches(){
+  let ms=M.filter(m=>(rF==='all'||R(m)===rF)&&(vF==='all'||m.vn===vF)&&(!qF||m.op.toLowerCase().includes(qF.toLowerCase())));
+  let h='';
+  ms.forEach((m,i)=>{
+    const r=R(m),[bc,lb]=r==='W'?['bw','Ғалаба']:r==='D'?['bd','Дуранг']:['bl','Мағлубият'];
+    h+=`<tr><td style="color:var(--text-muted);font-size:11px;font-weight:700">${i+1}</td><td><span class="tg">${m.yr}</span></td><td style="white-space:nowrap;font-size:12px">${m.dt}</td><td><span class="${VC(m.vn)}">${VL(m.vn)}</span></td><td><strong>${m.op}</strong>${m.note?`<span class="mn">★ ${m.note}</span>`:''}</td><td><span class="sct">${m.gf}:${m.ga}</span></td><td><span class="bdg ${bc}">${lb}</span></td></tr>`;
+  });
+  document.getElementById('mb').innerHTML=h||`<tr><td colspan="7" class="no-d">Маълумот топилмади</td></tr>`;
+  document.getElementById('mc').textContent=`${ms.length} та ўйин кўрсатилмоқда`;
+}
+function fR(v,btn){rF=v;document.querySelectorAll('[onclick^="fR"]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');buildMatches()}
+function fV(v,btn){vF=v;document.querySelectorAll('[onclick^="fV"]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');buildMatches()}
+function fQ(v){qF=v;buildMatches()}
+
+function buildOpp(sk='n'){
+  const mp={};
+  for(const m of M){if(!mp[m.op])mp[m.op]={op:m.op,n:0,w:0,d:0,l:0,gf:0,ga:0};const s=mp[m.op];s.n++;s.gf+=m.gf;s.ga+=m.ga;const r=R(m);if(r==='W')s.w++;else if(r==='D')s.d++;else s.l++;}
+  let arr=Object.values(mp).sort((a,b)=>b[sk]-a[sk]||(b.n-a.n));
+  let h='';
+  for(const o of arr){
+    const diff=o.gf-o.ga,ds=diff>0?'+'+diff:diff,dc=diff>0?'var(--green)':diff<0?'var(--red)':'var(--gray-600)';
+    h+=`<div class="opc"><div><div class="opn">${o.op}</div><div class="opr">${o.n} ўйин · ${o.gf}:${o.ga} · <span style="color:${dc};font-weight:800">${ds}</span></div></div><div class="opwdl"><div class="wp wpw">${o.w}</div><div class="wp wpd">${o.d}</div><div class="wp wpl">${o.l}</div></div></div>`;
+  }
+  document.getElementById('og').innerHTML=h;
+}
+function sOp(k,btn){document.querySelectorAll('[onclick^="sOp"]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');buildOpp(k)}
+
+function buildYears(){
+  const years=[...new Set(M.map(m=>m.yr))].sort();
+  let h='';
+  for(const yr of years){
+    const ms=M.filter(m=>m.yr===yr);
+    const w=ms.filter(m=>R(m)==='W').length,d=ms.filter(m=>R(m)==='D').length,l=ms.filter(m=>R(m)==='L').length;
+    const gf=S(ms,m=>m.gf),ga=S(ms,m=>m.ga),diff=gf-ga;
+    const dc=diff>0?'dp':diff<0?'dn':'dz',ds=diff>0?'+'+diff:diff;
+    const pct=Math.round(w/ms.length*100),fc=pct>=60?'var(--green-l)':pct>=40?'var(--gold-l)':'var(--red)';
+    h+=`<tr><td><span class="tg">${yr}</span></td><td><strong>${ms.length}</strong></td><td style="color:var(--green);font-weight:800">${w}</td><td style="color:var(--gold);font-weight:700">${d}</td><td style="color:var(--red);font-weight:700">${l}</td><td style="color:var(--blue-l);font-weight:700">${gf}</td><td style="color:#e06b5a;font-weight:700">${ga}</td><td class="${dc}">${ds}</td><td><div class="pw"><div class="pt"><div class="pf" style="width:${pct}%;background:${fc}"></div></div><span style="font-size:11.5px;font-weight:800;color:${fc}">${pct}%</span></div></td></tr>`;
+  }
+  document.getElementById('yrb').innerHTML=h;
+}
+
+function buildFacts(){
+  const w=M.filter(m=>R(m)==='W');
+  const cs=M.filter(m=>m.ga===0).length;
+  const maxGoal=[...M].sort((a,b)=>(b.gf+b.ga)-(a.gf+a.ga))[0];
+  let mx=0,cur=0;for(const m of M){if(R(m)==='W'){cur++;mx=Math.max(mx,cur)}else cur=0}
+  document.getElementById('rrow').innerHTML=[
+    {v:`${maxGoal.gf}:${maxGoal.ga}`,l:`Энг голли ўйин (${maxGoal.op}, ${maxGoal.yr})`},
+    {v:cs,l:'Клин шит (0 гол ўтказмаслик)'},
+    {v:(S(M,m=>m.gf)/M.length).toFixed(2),l:'Ўртача урилган гол/ўйин'},
+    {v:mx,l:'Кетма-кет ғалабалар серияси'},
+    {v:S(M,m=>m.gf)-S(M,m=>m.ga),l:'Умумий гол фарқи (+)'},
+    {v:Math.round(w.length/M.length*100)+'%',l:'Умумий ғалаба фоизи'},
+  ].map(r=>`<div class="recc"><div class="rcv">${r.v}</div><div class="rcl">${r.l}</div></div>`).join('');
+  const facts=[
+    {c:'blue',i:'7️⃣',t:'7 та уриниш — биттаси ҳаёт',d:'1997–2021 орасида 7 марта ЖЧ саралашидан ўтолмади. Ниҳоят 2025 йил ЖЧ 2026 га йўлланма олди.'},
+    {c:'green',i:'9️⃣',t:'Энг йирик ғалаба — 9:0',d:'2007 йил 13 октябрь, Хитой Тайпейига уй майдонида 9:0 — саралашлар тарихидаги энг катта ҳисоб.'},
+    {c:'gold',i:'🏠',t:'Уй майдонида 69% ғалаба',d:'Уй ўйинларида ғалаба фоизи 69%дан ошади. Тошкент — ҳақиқий қалъа.'},
+    {c:'blue',i:'🇯🇵',t:'Японияда ғалаба (2012)',d:'2012 йил Япония майдонида 1:0 ҳисобида ғалаба — Осиёнинг кучли жамоасига қарши буюк натижа.'},
+    {c:'red',i:'⚖️',t:'2006: Баҳрайн ва талашли плей-офф',d:'Япон ҳакам хатоси туфайли биринчи ўйин (1:0 Ғалаба) бекор қилинди. Натижада ЖЧ йўлланмасини бой берди.'},
+    {c:'green',i:'🎯',t:'+105 гол фарқи',d:'218 гол урилди, 113 та ўтказилди. Гол фарқи +105 — кучли ҳужум потенциали.'},
+    {c:'gold',i:'🤝',t:'Эрон — энг қийин рақиб',d:'8 та ўйинда: 2Ғ 3Д 3М. Эрон саралашларда доимий мураккаб синов бўлиб қолди.'},
+    {c:'blue',i:'🇰🇷',t:'Жанубий Корея — 8 ўйин',d:'1Ғ 2Д 5М. 2014 саралашида ЖЧ йўлланмасини фақат 1 гол фарқида бой берди.'},
+    {c:'green',i:'📅',t:'Энг кўп ўйинли йил — 1997',d:'14 та ўйин ўтказилди — бир йилда саралашлар тарихидаги энг кўп ўйин сони.'},
+    {c:'gold',i:'🌍',t:'Марказий Осиёдан биринчи',d:'ЖЧ 2026 — Марказий Осиёдан биринчи иштирок. Қозоғистон, Тожикистон, Туркманистон, Қирғизистон эришолмади.'},
+    {c:'red',i:'🔴',t:'2014: Бир гол орасида',d:'ЖЧ 2014 саралашида Жанубий Кореядан атиги 1 гол фарқи билан тўғридан-тўғри йўлланмани бой берди.'},
+    {c:'blue',i:'🏋️',t:'Президент мукофотлари',d:'2025 йил саралашдан сўнг Президент Мирзиёев барча ўйинчи ва стаб аъзоларига давлат мукофотлари ва автомобиллар берди.'},
+    {c:'green',i:'⚽',t:'Ўртача 1.86 гол/ўйин',d:'117 ўйинда 218 гол — Осиё саралашларида баланд ҳужум кўрсаткичи.'},
+    {c:'gold',i:'🏟️',t:'Икки уй стадиони',d:'Пахтакор Марказий стадиони (35,000) ва Миллий стадион (34,800) — асосий ЖЧ саралаш майдонлари.'},
+    {c:'red',i:'🇸🇦',t:'Саудия — энг оғир мағлубиятлар',d:'2008 йил сафарда 0:4 ва 2021 йил уйда 0:3 — саралашлар тарихидаги энг оғир мағлубиятлар.'},
+  ];
+  document.getElementById('fgrid').innerHTML=facts.map(f=>`<div class="fc ${f.c}"><div class="fi">${f.i}</div><div><div class="ftl">${f.t}</div><div class="fd2">${f.d}</div></div></div>`).join('');
+}
+
+// ══════ EDITOR ══════
+function buildEditor(){
+  origM=origM||JSON.parse(JSON.stringify(M));
+  const vens=['Ўзбекистонда','Сафарда','Бетараф'];
+  let h='';
+  M.forEach((m,i)=>{
+    const r=R(m),[bc,rl]=r==='W'?['bw','Ғ']:r==='D'?['bd','Д']:['bl','М'];
+    h+=`<tr id="er-${i}" data-i="${i}">
+      <td style="color:var(--text-muted);font-size:11px;font-weight:700;padding-left:14px">${i+1}</td>
+      <td><input class="ei2" style="width:52px" type="number" value="${m.yr}" onchange="ec(${i},'yr',+this.value)"></td>
+      <td><input class="ei2" style="width:110px" value="${m.dt||''}" onchange="ec(${i},'dt',this.value)"></td>
+      <td><select class="esel" onchange="ec(${i},'vn',this.value)">${vens.map(v=>`<option${v===m.vn?' selected':''}>${v}</option>`).join('')}</select></td>
+      <td><input class="ei2" style="width:140px" value="${m.op}" onchange="ec(${i},'op',this.value)"></td>
+      <td><input class="ei2" style="width:44px;text-align:center" value="${m.gf}" type="number" min="0" onchange="ec(${i},'gf',+this.value)"></td>
+      <td><input class="ei2" style="width:44px;text-align:center" value="${m.ga}" type="number" min="0" onchange="ec(${i},'ga',+this.value)"></td>
+      <td><span class="bdg ${bc}" id="er-res-${i}">${rl}</span></td>
+      <td><input class="ei2" style="width:130px;font-size:11px" value="${m.note||''}" placeholder="Изоҳ..." onchange="ec(${i},'note',this.value)"></td>
+      <td><button class="dr" onclick="delRow(${i})" title="Ўчириш">✕</button></td>
+    </tr>`;
+  });
+  document.getElementById('eb2').innerHTML=h;
+  document.getElementById('est').textContent=`${M.length} та ўйин`;
+}
+
+function ec(i,f,v){
+  M[i][f]=v;
+  document.getElementById(`er-${i}`).classList.add('emod');
+  const r=R(M[i]),[bc,rl]=r==='W'?['bw','Ғ']:r==='D'?['bd','Д']:['bl','М'];
+  const rb=document.getElementById(`er-res-${i}`);
+  rb.className=`bdg ${bc}`;rb.textContent=rl;
+}
+
+function delRow(i){
+  if(!confirm(`"${M[i].op}" билан ўйинни ўчириш?`))return;
+  M.splice(i,1);buildEditor();toast('Ўйин ўчирилди','err');
+}
+
+function addRow(){
+  const lastYr=M.length?M[M.length-1].yr:2025;
+  M.push({yr:lastYr,dt:'',vn:'Ўзбекистонда',op:'',gf:0,ga:0,note:''});
+  buildEditor();
+  const nr=document.getElementById(`er-${M.length-1}`);
+  if(nr){nr.classList.add('enew');nr.scrollIntoView({behavior:'smooth',block:'center'});}
+  toast('Янги қатор қўшилди — маълумотларни тўлдиринг','');
+}
+
+function saveEd(){
+  const bad=M.filter(m=>!m.op.trim()||isNaN(m.gf)||isNaN(m.ga));
+  if(bad.length){toast(`${bad.length} та ўйинда хато маълумот!`,'err');return}
+  M.sort((a,b)=>a.yr-b.yr);
+  origM=JSON.parse(JSON.stringify(M));
+  rebuildAll();buildEditor();
+  toast('Сақланди ва янгиланди ✓','ok');
+}
+
+function resetEd(){
+  if(!origM){toast('Ўзгартириш йўқ','');return}
+  if(!confirm('Барча ўзгартиришларни бекор қилиш?'))return;
+  M=JSON.parse(JSON.stringify(origM));
+  rebuildAll();buildEditor();toast('Тикланди','');
+}
+
+function rebuildAll(){
+  updHero();buildVenue();buildYrChart();buildTrend();buildTopGoals();buildMatches();buildOpp();buildYears();buildFacts();
+}
+
+function exportCSV(){
+  const bom='\uFEFF',hdr='Йил,Сана,Қаерда,Рақиб,Урилган,Ўтказилган,Ҳисоб,Натижа,Изоҳ';
+  const rows=M.map(m=>{const r=R(m),rl=r==='W'?'Ғалаба':r==='D'?'Дуранг':'Мағлубият';return`${m.yr},"${m.dt||''}","${m.vn}","${m.op}",${m.gf},${m.ga},"${m.gf}:${m.ga}","${rl}","${m.note||''}"`;});
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(bom+hdr+'\n'+rows.join('\n'));a.download='uzbekistan_wc_qualifiers.csv';a.click();
+  toast('CSV юкланди 📤','ok');
+}
+
+function toast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className=`toast ${type} show`;
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// INIT
+rebuildAll();
+window.addEventListener('resize',()=>setTimeout(buildTrend,150));
+</script>
+</body>
+</html>
